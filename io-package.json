@@ -77,7 +77,7 @@
     },
     "native": {
         "address": "http://pi.hole",
-        "password": "47114711",
+        "password": "",
         "protocol": "http",
         "port": "80",
         "refresh": "300"
