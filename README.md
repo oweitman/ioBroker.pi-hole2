@@ -13,10 +13,10 @@
 
 ## pi-hole2 adapter for ioBroker
 
-Manage a pi-hole installation >V6.
+Manage a pi-hole installation >=v6.
 Get information from pi-hole.
 Start/Stop blocking domains.
-(for pi-hole <V6 please use adapter ioBroker.pi-hole)
+(for pi-hole <v6 please use adapter ioBroker.pi-hole)
 
 USE AT YOUR OWN RISK!!! ABSOLUTELY NO WARRANTY FOR DAMAGES, ETC.!!!
 
@@ -93,6 +93,11 @@ sendTo(
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- small documentation bugfix
+
 ### 0.2.2 (2025-06-24)
 
 - fix github action file
