@@ -87,6 +87,15 @@ sendTo(
 - 2FA
 - https protocol (possible but not tested)
 
+## Troubleshooting
+
+### WARNING: No free API seats available
+
+Go to your pi-hole installation and delete in
+**Settings / Webinterface/API / Currently active sessions**
+alls Sessions with User Agent iobroker.pi-hole2.
+You have restarted the adapter too often and each time a new session is requested.
+
 ## Changelog
 
 <!--
@@ -97,6 +106,7 @@ sendTo(
 ### **WORK IN PROGRESS**
 
 - small documentation bugfix
+- adjust user agent and add trouble shooting info
 
 ### 0.2.2 (2025-06-24)
 
