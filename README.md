@@ -47,18 +47,18 @@ Go to <http://pi.hole/api/docs/#> and enter your password and press login button
 
 ```javascript
 sendTo(
-    'pi-hole2.0',
-    'piholeapi',
-    {
-        method: 'GET',
-        endpoint: '/history/clients',
-        params: {
-            N: 20,
-        },
+  "pi-hole2.0",
+  "piholeapi",
+  {
+    method: "GET",
+    endpoint: "/history/clients",
+    params: {
+      N: 20,
     },
-    function (data) {
-        console.log(data);
-    },
+  },
+  function (data) {
+    console.log(data);
+  },
 );
 ```
 
@@ -81,6 +81,11 @@ sendTo(
 ## Todo New Functions
 
 - ~~sendTo Functions to control and get informations with parameters~~
+
+## Not Implemented or planned functione
+
+- 2FA
+- https protocol (possible but not tested)
 
 ## Changelog
 
