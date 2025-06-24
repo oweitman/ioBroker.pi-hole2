@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "news": {
+      "0.2.1": {
+        "en": "enable NPM deploy",
+        "de": "nPM-Einsatz",
+        "ru": "возможность развертывания NPM",
+        "pt": "activar a implantação do NPM",
+        "nl": "nPM-implementatie inschakelen",
+        "fr": "activer le déploiement de NPM",
+        "it": "abilitare l'implementazione NPM",
+        "es": "habilitar el despliegue del mecanismo nacional de prevención",
+        "pl": "umożliwić rozmieszczenie NPM",
+        "uk": "увімкнути NPM розгортання",
+        "zh-cn": "能够部署国家预防机制"
+      },
       "0.2.0": {
         "en": "first npm release",
         "de": "erste npm veröffentlichung",

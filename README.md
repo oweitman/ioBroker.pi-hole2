@@ -93,6 +93,10 @@ sendTo(
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.1 (2025-06-24)
+
+- enable NPM deploy
+
 ### 0.2.0 (2025-06-24)
 
 - (oweitman) first npm release
