@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "default Launch ioBroker Adapter ",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.pi-hole2/main.js",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+            "console": "internalConsole",
+            "outputCapture": "std",
+            "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
+        }
+    ]
+}
+//node --inspect-brk=localhost:9229 .\node_modules\iobroker.skiinfo\main.js

@@ -1,0 +1,109 @@
+{
+    "common": {
+        "name": "pi-hole2",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "Pi-Hole 2",
+            "de": "Pi-Hole 2",
+            "ru": "PI-HOLE 2",
+            "pt": "Pi-burro 2",
+            "nl": "Pi-hole 2",
+            "fr": "Pi-trous 2",
+            "it": "Pi-hole 2",
+            "es": "Pi-Hole 2",
+            "pl": "Pi-hole 2",
+            "uk": "Pi-отвір 2",
+            "zh-cn": "pi-hole 2"
+        },
+        "desc": {
+            "en": "Manage a pi-hole installation",
+            "de": "Verwalten Sie eine PI-Loch-Installation",
+            "ru": "Управлять установкой PI-Hole",
+            "pt": "Gerenciar uma instalação de buraco PI",
+            "nl": "Beheer een PI-hole-installatie",
+            "fr": "Gérer une installation de trou Pi",
+            "it": "Gestisci un'installazione PI-Hole",
+            "es": "Administre una instalación de Pi-Hole",
+            "pl": "Zarządzaj instalacją PI-Hole",
+            "uk": "Керуйте встановленням PI-лунки",
+            "zh-cn": "管理PI孔安装"
+        },
+        "authors": ["oweitman <oweitman@gmx.de>"],
+        "keywords": ["pi-hole2"],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "pi-hole2.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.pi-hole2/main/admin/pi-hole2.png",
+        "readme": "https://github.com/oweitman/ioBroker.pi-hole2/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "daemon",
+        "type": "network",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": "7.0.23"
+            }
+        ]
+    },
+    "native": {
+        "address": "http://pi.hole",
+        "password": "47114711",
+        "protocol": "http",
+        "port": "80",
+        "refresh": "300"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
