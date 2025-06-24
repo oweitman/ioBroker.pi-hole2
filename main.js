@@ -12,7 +12,7 @@ let piholeserver;
 
 class PiHole2 extends utils.Adapter {
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options]
      */
     constructor(options) {
         super({
@@ -44,12 +44,10 @@ class PiHole2 extends utils.Adapter {
         // In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
         this.subscribeStates('*');
     }
-    requestData() {
-
-    }
 
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
+     *
      * @param {() => void} callback
      */
     onUnload(callback) {
@@ -61,7 +59,7 @@ class PiHole2 extends utils.Adapter {
             // clearInterval(interval1);
 
             callback();
-        } catch (e) {
+        } catch /* (e) */ {
             callback();
         }
     }
@@ -85,6 +83,7 @@ class PiHole2 extends utils.Adapter {
 
     /**
      * Is called if a subscribed state changes
+     *
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
@@ -107,9 +106,9 @@ class PiHole2 extends utils.Adapter {
 if (require.main !== module) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options]
      */
-    module.exports = (options) => new PiHole2(options);
+    module.exports = options => new PiHole2(options);
 } else {
     // otherwise start the instance directly
     new PiHole2();
