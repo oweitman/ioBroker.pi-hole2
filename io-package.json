@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "first npm release",
+        "de": "erste npm veröffentlichung",
+        "ru": "первый npm-релиз",
+        "pt": "primeira versão npm",
+        "nl": "eerste npm release",
+        "fr": "première sortie npm",
+        "it": "primo npm rilascio",
+        "es": "primer lanzamiento de npm",
+        "pl": "pierwsze wydanie npm",
+        "uk": "перший npm реліз",
+        "zh-cn": "第一个 npm 发布"
+      },
       "0.1.0": {
         "en": "see commit history"
       },
@@ -46,8 +59,12 @@
       "uk": "Керуйте встановленням PI-лунки",
       "zh-cn": "管理PI孔安装"
     },
-    "authors": ["oweitman <oweitman@gmx.de>"],
-    "keywords": ["pi-hole2"],
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "pi-hole2"
+    ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"

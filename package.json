@@ -1,6 +1,6 @@
 {
   "name": "iobroker.pi-hole2",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Manage a pi-hole installation",
   "author": {
     "name": "oweitman",
@@ -70,7 +70,7 @@
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .",
     "translate": "translate-adapter",
-    "release": "release-script"
+    "release": "release-script --all"
   },
   "bugs": {
     "url": "https://github.com/oweitman/ioBroker.pi-hole2/issues"
