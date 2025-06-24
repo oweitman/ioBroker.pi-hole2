@@ -37,6 +37,31 @@ Michael Schuster <development@unltd-networx.de>.
 
 To Enable/Disable the blocking, please use the switch in Datapoint Blocking. The BlockingTime is only used for disabling the blocking to automaticly reenable the blocking. Enabling takes place immediately.
 
+### General SendTo Function
+
+The sendTo function is used to send commands to the pi-hole device.
+You can try the api on your local machine.
+Go to <http://pi.hole/api/docs/#> and enter your password and press login button.
+
+#### Example
+
+```javascript
+sendTo(
+    'pi-hole2.0',
+    'piholeapi',
+    {
+        method: 'GET',
+        endpoint: '/history/clients',
+        params: {
+            N: 20,
+        },
+    },
+    function (data) {
+        console.log(data);
+    },
+);
+```
+
 ## Todo Existing Functions
 
 - ~~login~~
@@ -55,7 +80,7 @@ To Enable/Disable the blocking, please use the switch in Datapoint Blocking. The
 
 ## Todo New Functions
 
-- sendTo Functions to control and get informations with parameters
+- ~~sendTo Functions to control and get informations with parameters~~
 
 ## Changelog
 

@@ -58,6 +58,7 @@
         "tier": 3,
         "mode": "daemon",
         "type": "network",
+        "messagebox": true,
         "compact": true,
         "connectionType": "local",
         "dataSource": "poll",
