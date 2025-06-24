@@ -93,6 +93,10 @@ sendTo(
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.2 (2025-06-24)
+
+- fix github action file
+
 ### 0.2.1 (2025-06-24)
 
 - enable NPM deploy
