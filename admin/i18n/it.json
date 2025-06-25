@@ -1,0 +1,9 @@
+{
+    "address": "Indirizzo",
+    "password": "Password",
+    "refresh Summary (seconds)": "Aggiorna riassunto (secondi)",
+    "refresh Blocking (seconds)": "Aggiorna il blocco (secondi)",
+    "refresh System (seconds)": "Aggiorna sistema (secondi)",
+    "refresh Top (seconds)": "Aggiorna top (secondi)",
+    "refresh Version (seconds)": "Aggiorna versione (secondi)"
+}

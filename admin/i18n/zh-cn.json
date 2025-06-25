@@ -1,0 +1,9 @@
+{
+    "address": "地址",
+    "password": "密码",
+    "refresh Summary (seconds)": "刷新摘要（秒）",
+    "refresh Blocking (seconds)": "刷新阻塞（秒）",
+    "refresh System (seconds)": "刷新系统（秒）",
+    "refresh Top (seconds)": "刷新顶部（秒）",
+    "refresh Version (seconds)": "刷新版本（秒）"
+}

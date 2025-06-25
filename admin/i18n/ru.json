@@ -1,0 +1,9 @@
+{
+    "address": "Адрес",
+    "password": "Пароль",
+    "refresh Summary (seconds)": "обновить резюме (секунды)",
+    "refresh Blocking (seconds)": "Обновление блокировки (секунды)",
+    "refresh System (seconds)": "система обновления (секунды)",
+    "refresh Top (seconds)": "обновить топ (секунды)",
+    "refresh Version (seconds)": "обновить версию (секунды)"
+}

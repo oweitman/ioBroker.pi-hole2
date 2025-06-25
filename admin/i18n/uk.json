@@ -1,0 +1,9 @@
+{
+    "address": "Адреса",
+    "password": "Пароль",
+    "refresh Summary (seconds)": "Підсумок оновлення (секунди)",
+    "refresh Blocking (seconds)": "Оновити блокування (секунди)",
+    "refresh System (seconds)": "Система оновлення (секунди)",
+    "refresh Top (seconds)": "Оновити верх (секунди)",
+    "refresh Version (seconds)": "Оновити версію (секунди)"
+}

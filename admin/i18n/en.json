@@ -1,5 +1,9 @@
 {
-    "address": "Address",
-    "password": "Password",
-    "refresh (seconds)": "Refresh (seconds)"
+  "address": "Address",
+  "password": "Password",
+  "refresh Summary (seconds)": "refresh Summary (seconds)",
+  "refresh Blocking (seconds)": "refresh Blocking (seconds)",
+  "refresh System (seconds)": "refresh System (seconds)",
+  "refresh Top (seconds)": "refresh Top (seconds)",
+  "refresh Version (seconds)": "refresh Version (seconds)"
 }

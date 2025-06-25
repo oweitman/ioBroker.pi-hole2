@@ -1,0 +1,9 @@
+{
+    "address": "DIRECCIÓN",
+    "password": "Contraseña",
+    "refresh Summary (seconds)": "Resumen de actualización (segundos)",
+    "refresh Blocking (seconds)": "Bloqueo de actualización (segundos)",
+    "refresh System (seconds)": "Sistema de actualización (segundos)",
+    "refresh Top (seconds)": "Actualice la parte superior (segundos)",
+    "refresh Version (seconds)": "Versión de actualización (segundos)"
+}

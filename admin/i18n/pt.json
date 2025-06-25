@@ -1,0 +1,9 @@
+{
+    "address": "Endereço",
+    "password": "Senha",
+    "refresh Summary (seconds)": "Resumo da atualização (segundos)",
+    "refresh Blocking (seconds)": "Bloqueio de atualização (segundos)",
+    "refresh System (seconds)": "Sistema de atualização (segundos)",
+    "refresh Top (seconds)": "Atualizar (segundos)",
+    "refresh Version (seconds)": "Versão de atualização (segundos)"
+}

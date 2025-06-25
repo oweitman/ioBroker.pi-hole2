@@ -1,0 +1,9 @@
+{
+    "address": "Adres",
+    "password": "Hasło",
+    "refresh Summary (seconds)": "Odśwież podsumowanie (sekundy)",
+    "refresh Blocking (seconds)": "Blokowanie odświeżania (sekundy)",
+    "refresh System (seconds)": "System odświeżania (sekundy)",
+    "refresh Top (seconds)": "Odśwież top (sekundy)",
+    "refresh Version (seconds)": "Wersja odświeżania (sekundy)"
+}
