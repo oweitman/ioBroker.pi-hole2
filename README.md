@@ -78,16 +78,58 @@ and the following template:
 
 ```ejs
 <style>
-   p.pihole {
-       margin: 0px;
-   }
+    p.pihole {
+        margin: 0px;
+    }
+    p.pihole .name {
+        display: inline-block;
+        width: 100px;
+    }
+    p.pihole .version {
+        display: inline-block;
+        width: 50px;
+    }
 </style>
-<p class="pihole">core.local: <%- data.version.core.local.version %></p>
-<p class="pihole">core.remote: <%- data.version.core.remote.version %></p>
-<p class="pihole">web.local: <%- data.version.web.local.version %></p>
-<p class="pihole">web.remote: <%- data.version.web.remote.version %></p>
-<p class="pihole">ftl.local: <%- data.version.ftl.local.version %></p>
-<p class="pihole">ftl.remote: <%- data.version.ftl.remote.version %></p>
+<p class="pihole"><span class="pihole name">core.local:</span><span class="pihole version"><%- data.version.core.local.version %></span></p>
+<p class="pihole"><span class="pihole name">core.remote:</span><span class="pihole version"><%- data.version.core.remote.version %></span></p>
+<p class="pihole"><span class="pihole name">web.local:</span><span class="pihole version"><%- data.version.web.local.version %></span></p>
+<p class="pihole"><span class="pihole name">web.remote:</span><span class="pihole version"><%- data.version.web.remote.version %></span></p>
+<p class="pihole"><span  class="pihole name">ftl.local:</span><span class="pihole version"><%- data.version.ftl.local.version %></span></p>
+<p class="pihole"><span class="pihole name">ftl.remote:</span><span class="pihole version"><%- data.version.ftl.remote.version %></span></p>
+
+```
+
+### Summary with widget jsontemplate for vis and vis2
+
+The jsontemplate widget can be installed via the following documentation: <https://forum.iobroker.net/topic/31521/test-widget-json-template>
+
+In the widget configuration enter the following datapoint:
+
+```javascript
+pi-hole2.0.Summary
+```
+
+and the following template:
+
+```ejs
+<style>
+    p.pihole {
+        margin: 0px;
+    }
+    p.pihole .name {
+        display: inline-block;
+        width: 150px;
+    }
+    p.pihole .number {
+        display: inline-block;
+        width: 70px;
+        text-align: right;
+    }
+</style>
+<p class="pihole"><span class="pihole name">queries.total:</span><span class="pihole number"><%- data.queries.total %></span></p>
+<p class="pihole"><span class="pihole name">queries.blocked:</span><span class="pihole number"><%- data.queries.blocked %></span></p>
+<p class="pihole"><span class="pihole name">clients.active:</span><span class="pihole number"><%- data.clients.active %></span></p>
+<p class="pihole"><span class="pihole name">clients.total:</span><span class="pihole number"><%- data.clients.total %></span></p>
 
 ```
 
@@ -136,6 +178,8 @@ You have restarted the adapter too often and each time a new session is requeste
 
 - small documentation bugfix
 - adjust user agent and add trouble shooting info
+- add visualization example for versions
+- add visualization example for summary
 
 ### 0.2.2 (2025-06-24)
 
