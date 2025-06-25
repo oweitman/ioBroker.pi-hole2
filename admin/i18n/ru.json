@@ -5,5 +5,7 @@
     "refresh Blocking (seconds)": "Обновление блокировки (секунды)",
     "refresh System (seconds)": "система обновления (секунды)",
     "refresh Top (seconds)": "обновить топ (секунды)",
-    "refresh Version (seconds)": "обновить версию (секунды)"
+    "refresh Version (seconds)": "обновить версию (секунды)",
+    "enabledetailedsummary": "Подробное резюме данных",
+    "enabledetailedversion": "Подробная версия данных"
 }

@@ -5,5 +5,7 @@
     "refresh Blocking (seconds)": "Blokowanie odświeżania (sekundy)",
     "refresh System (seconds)": "System odświeżania (sekundy)",
     "refresh Top (seconds)": "Odśwież top (sekundy)",
-    "refresh Version (seconds)": "Wersja odświeżania (sekundy)"
+    "refresh Version (seconds)": "Wersja odświeżania (sekundy)",
+    "enabledetailedsummary": "Szczegółowe podsumowanie danych",
+    "enabledetailedversion": "Szczegółowa wersja danych"
 }

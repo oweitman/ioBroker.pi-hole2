@@ -5,5 +5,7 @@
     "refresh Blocking (seconds)": "Vernieuw blokkering (seconden)",
     "refresh System (seconds)": "Vernieuwingssysteem (seconden)",
     "refresh Top (seconds)": "Vernieuw top (seconden)",
-    "refresh Version (seconds)": "Vernieuw versie (seconden)"
+    "refresh Version (seconds)": "Vernieuw versie (seconden)",
+    "enabledetailedsummary": "Gedetailleerde gegevensoverzicht",
+    "enabledetailedversion": "Gedetailleerde gegevensversie"
 }

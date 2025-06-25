@@ -1,6 +1,8 @@
 {
   "address": "Address",
   "password": "Password",
+  "enabledetailedsummary": "Detailed data Summary",
+  "enabledetailedversion": "Detailed data Version",
   "refresh Summary (seconds)": "refresh Summary (seconds)",
   "refresh Blocking (seconds)": "refresh Blocking (seconds)",
   "refresh System (seconds)": "refresh System (seconds)",

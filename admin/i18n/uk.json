@@ -5,5 +5,7 @@
     "refresh Blocking (seconds)": "Оновити блокування (секунди)",
     "refresh System (seconds)": "Система оновлення (секунди)",
     "refresh Top (seconds)": "Оновити верх (секунди)",
-    "refresh Version (seconds)": "Оновити версію (секунди)"
+    "refresh Version (seconds)": "Оновити версію (секунди)",
+    "enabledetailedsummary": "Детальний підсумок даних",
+    "enabledetailedversion": "Детальна версія даних"
 }

@@ -37,6 +37,18 @@ Michael Schuster <development@unltd-networx.de>.
 
 To Enable/Disable the blocking, please use the switch in Datapoint Blocking. The BlockingTime is only used for disabling the blocking to automaticly reenable the blocking. Enabling takes place immediately.
 
+### Detailed information Summary
+
+Some data from Summary is extracted into data points in Data.Summary.
+This can be enabled/disabled in the configuration.
+The data points are highlighted green/red when the feature is enabled/disabled.
+
+### Detailed information Version
+
+Some data from Version is extracted into data points in Data.Version.
+This can be enabled/disabled in the configuration.
+The data points are highlighted green/red when the feature is enabled/disabled.
+
 ### General SendTo Function
 
 The sendTo function is used to send commands to the pi-hole device.
@@ -173,6 +185,10 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- Make extraction of detail values ​​for version/summary deactivatable
 
 ### 0.3.0 (2025-06-25)
 

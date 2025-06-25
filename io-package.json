@@ -169,6 +169,8 @@
     "password": "",
     "protocol": "http",
     "port": "80",
+    "enabledetailedsummary": true,
+    "enabledetailedversion": true,
     "refreshSummary": "1",
     "refreshBlocking": "10",
     "refreshSystem": "20",

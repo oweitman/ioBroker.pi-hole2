@@ -5,5 +5,7 @@
     "refresh Blocking (seconds)": "刷新阻塞（秒）",
     "refresh System (seconds)": "刷新系统（秒）",
     "refresh Top (seconds)": "刷新顶部（秒）",
-    "refresh Version (seconds)": "刷新版本（秒）"
+    "refresh Version (seconds)": "刷新版本（秒）",
+    "enabledetailedsummary": "详细的数据摘要",
+    "enabledetailedversion": "详细的数据版本"
 }

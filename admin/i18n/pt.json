@@ -5,5 +5,7 @@
     "refresh Blocking (seconds)": "Bloqueio de atualização (segundos)",
     "refresh System (seconds)": "Sistema de atualização (segundos)",
     "refresh Top (seconds)": "Atualizar (segundos)",
-    "refresh Version (seconds)": "Versão de atualização (segundos)"
+    "refresh Version (seconds)": "Versão de atualização (segundos)",
+    "enabledetailedsummary": "Resumo dos dados detalhados",
+    "enabledetailedversion": "Versão de dados detalhados"
 }

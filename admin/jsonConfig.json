@@ -27,6 +27,26 @@
       "lg": 4,
       "xl": 4
     },
+    "enabledetailedsummary": {
+      "type": "checkbox",
+      "label": "enabledetailedsummary",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "enabledetailedversion": {
+      "type": "checkbox",
+      "label": "enabledetailedversion",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
     "refreshSummary": {
       "type": "number",
       "label": "refresh Summary (seconds)",
