@@ -173,11 +173,12 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.3.0 (2025-06-25)
 
 - add translation files
 - rework refresh logic aligned with pihole
-- encrypt password
+- encrypt password (Password must be entered again )
 - add detailed datapoints for Summary and Version for selected data
 
 ### 0.2.3 (2025-06-25)
