@@ -12,7 +12,7 @@ let piholeserver;
 
 class PiHole2 extends utils.Adapter {
     /**
-     * @param {Partial<utils.AdapterOptions>} [options]
+     * @param {Partial<utils.AdapterOptions>} [options] Adapter options
      */
     constructor(options) {
         super({
@@ -48,7 +48,7 @@ class PiHole2 extends utils.Adapter {
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
      *
-     * @param {() => void} callback
+     * @param {() => void} callback callback to adapter
      */
     onUnload(callback) {
         try {
@@ -84,8 +84,8 @@ class PiHole2 extends utils.Adapter {
     /**
      * Is called if a subscribed state changes
      *
-     * @param {string} id
-     * @param {ioBroker.State | null | undefined} state
+     * @param {string} id id
+     * @param {ioBroker.State | null | undefined} state state
      */
     onStateChange(id, state) {
         if (state) {
@@ -96,6 +96,11 @@ class PiHole2 extends utils.Adapter {
         }
     }
 
+    /**
+     * Is called when a message is received from another adapter.
+     *
+     * @param obj - Message object
+     */
     onMessage(obj) {
         if (typeof obj === 'object' && obj.message) {
             piholeserver.processMessages(obj);
@@ -105,9 +110,6 @@ class PiHole2 extends utils.Adapter {
 
 if (require.main !== module) {
     // Export the constructor in compact mode
-    /**
-     * @param {Partial<utils.AdapterOptions>} [options]
-     */
     module.exports = options => new PiHole2(options);
 } else {
     // otherwise start the instance directly
