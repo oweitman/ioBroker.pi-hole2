@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "news": {
+      "0.4.0": {
+        "en": "Make extraction of detail values ​​for version/summary deactivatable",
+        "de": "Extrahieren von Detailwerten für Version/summary deaktiviert",
+        "ru": "Сделайте извлечение значений детализации для деактивируемой версии/резюме",
+        "pt": "Fazer a extração dos valores de detalhe para a versão/síntese desativada",
+        "nl": "Verwijderen van detailwaarden voor versie/samenvatting deactiveren",
+        "fr": "Faire l'extraction des valeurs de détail pour la version/résumé déactivable",
+        "it": "Estrazione dei valori di dettaglio per la versione/sommario disattivabile",
+        "es": "Realizar la extracción de los valores de detalle para la versión/desactivación total",
+        "pl": "Wykonaj ekstrakcję wartości szczegółowych dla wersji / podsumowania dezaktywowane",
+        "uk": "Зробіть вилучення докладних значень для версії/сумаційного деактивату",
+        "zh-cn": "使取出版本/摘要去功能化的详细值"
+      },
       "0.3.0": {
         "en": "add translation files\nrework refresh logic aligned with pihole\nencrypt password\nadd detailed datapoints for Summary and Version for selected data",
         "de": "übersetzungsdateien hinzufügen\nrefresh-logik mit pihole\npasswort verschlüsseln\ndetaillierte Datenpunkte für Zusammenfassung und Version für ausgewählte Daten hinzufügen",
@@ -80,19 +93,6 @@
         "pl": "Zobacz historię zatwierdzenia",
         "uk": "Див. Історію Комітету",
         "zh-cn": "请参阅“提交历史”"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
       }
     },
     "titleLang": {
