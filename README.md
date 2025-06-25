@@ -173,8 +173,7 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.3.0 (2025-06-25)
 
 - add translation files
 - rework refresh logic aligned with pihole

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "0.2.3",
+    "version": "0.3.0",
     "news": {
+      "0.3.0": {
+        "en": "add translation files\nrework refresh logic aligned with pihole\nencrypt password\nadd detailed datapoints for Summary and Version for selected data",
+        "de": "übersetzungsdateien hinzufügen\nrefresh-logik mit pihole\npasswort verschlüsseln\ndetaillierte Datenpunkte für Zusammenfassung und Version für ausgewählte Daten hinzufügen",
+        "ru": "добавить файлы перевода\nпереработка логики обновления, выровненной с отверстием\nшифровать пароль\nдобавить подробные точки данных для резюме и версии для выбранных данных",
+        "pt": "adicionar arquivos de tradução\nrefazer a lógica de atualização alinhada com pihole\ncriptografar senha\nadicionar pontos de dados detalhados para Resumo e Versão para dados selecionados",
+        "nl": "vertaalbestanden toevoegen\nrework refresh logica uitgelijnd met pihole\nwachtwoord versleutelen\ngedetailleerde datapunten voor samenvatting en versie toevoegen voor geselecteerde gegevens",
+        "fr": "ajouter des fichiers de traduction\nretravailler la logique de rafraîchissement alignée sur le trou\nchiffrer le mot de passe\najouter des points de données détaillés pour le résumé et la version pour certaines données",
+        "it": "aggiungere i file di traduzione\nrielaborare la logica rinfrescante allineata con foro\ncrittografia password\naggiungere i datapoint dettagliati per Riepilogo e Versione per i dati selezionati",
+        "es": "añadir archivos de traducción\nrework fresco lógica alineado con el agujero\ncontraseña de cifrado\nañadir datos detallados para Resumen y Versión para datos seleccionados",
+        "pl": "dodawanie plików tłumaczeniowych\nodświeżanie logiki dopasowane do otworu\nszyfrowanie hasła\ndodaj szczegółowe punkty danych dla podsumowania i wersji dla wybranych danych",
+        "uk": "додати файли перекладу\nвідновлення логіки, що вирівнюється з фіксатором\nзашифрувати пароль\nдодати докладні точки даних для Резюме та Версія для вибраних даних",
+        "zh-cn": "添加翻译文件\n根据 pihole 重修刷新逻辑\n加密密码\n为选定数据的概要和版本添加详细数据点"
+      },
       "0.2.3": {
         "en": "small documentation bugfix\nadjust user agent and add trouble shooting info\nadd visualization example for versions\nadd visualization example for summary",
         "de": "kleine dokumentation bugfix\nbenutzeragent anpassen und probleme schießen info hinzufügen\nvisualisierungsbeispiel für versionen hinzufügen\nvisualisierungsbeispiel für zusammenfassung hinzufügen",
@@ -108,8 +121,12 @@
       "uk": "Керуйте встановленням PI-лунки",
       "zh-cn": "管理PI孔安装"
     },
-    "authors": ["oweitman <oweitman@gmx.de>"],
-    "keywords": ["pi-hole2"],
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "pi-hole2"
+    ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"
@@ -141,8 +158,12 @@
       }
     ]
   },
-  "encryptedNative": ["password"],
-  "protectedNative": ["password"],
+  "encryptedNative": [
+    "password"
+  ],
+  "protectedNative": [
+    "password"
+  ],
   "native": {
     "address": "http://pi.hole",
     "password": "",
