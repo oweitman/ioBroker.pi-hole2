@@ -62,6 +62,35 @@ sendTo(
 );
 ```
 
+## Visualization
+
+### Versions with widget jsontemplate for vis and vis2
+
+The jsontemplate widget can be installed via the following documentation: <https://forum.iobroker.net/topic/31521/test-widget-json-template>
+
+In the widget configuration enter the following datapoint:
+
+```javascript
+pi-hole2.0.Version
+```
+
+and the following template:
+
+```ejs
+<style>
+   p.pihole {
+       margin: 0px;
+   }
+</style>
+<p class="pihole">core.local: <%- data.version.core.local.version %></p>
+<p class="pihole">core.remote: <%- data.version.core.remote.version %></p>
+<p class="pihole">web.local: <%- data.version.web.local.version %></p>
+<p class="pihole">web.remote: <%- data.version.web.remote.version %></p>
+<p class="pihole">ftl.local: <%- data.version.ftl.local.version %></p>
+<p class="pihole">ftl.remote: <%- data.version.ftl.remote.version %></p>
+
+```
+
 ## Todo Existing Functions
 
 - ~~login~~
