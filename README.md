@@ -177,6 +177,8 @@ You have restarted the adapter too often and each time a new session is requeste
 ### **WORK IN PROGRESS**
 
 - add translation files
+- rework refresh logic aligned with pihole
+- encrypt password
 
 ### 0.2.3 (2025-06-25)
 

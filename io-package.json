@@ -56,7 +56,17 @@
         "zh-cn": "第一个 npm 发布"
       },
       "0.1.0": {
-        "en": "see commit history"
+        "en": "see commit history",
+        "de": "Siehe Commit History",
+        "ru": "Смотрите историю коммита",
+        "pt": "Veja a história do comprometimento",
+        "nl": "Zie Commit History",
+        "fr": "Voir l'histoire de la validation",
+        "it": "Vedi la storia del commit",
+        "es": "Ver Historia del comet",
+        "pl": "Zobacz historię zatwierdzenia",
+        "uk": "Див. Історію Комітету",
+        "zh-cn": "请参阅“提交历史”"
       },
       "0.0.1": {
         "en": "initial release",
@@ -98,12 +108,8 @@
       "uk": "Керуйте встановленням PI-лунки",
       "zh-cn": "管理PI孔安装"
     },
-    "authors": [
-      "oweitman <oweitman@gmx.de>"
-    ],
-    "keywords": [
-      "pi-hole2"
-    ],
+    "authors": ["oweitman <oweitman@gmx.de>"],
+    "keywords": ["pi-hole2"],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"
@@ -135,12 +141,18 @@
       }
     ]
   },
+  "encryptedNative": ["password"],
+  "protectedNative": ["password"],
   "native": {
     "address": "http://pi.hole",
     "password": "",
     "protocol": "http",
     "port": "80",
-    "refresh": "300"
+    "refreshSummary": "1",
+    "refreshBlocking": "10",
+    "refreshSystem": "20",
+    "refreshTop": "60",
+    "refreshVersion": "120"
   },
   "objects": [],
   "instanceObjects": [
