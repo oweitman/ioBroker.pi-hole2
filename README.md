@@ -179,6 +179,7 @@ You have restarted the adapter too often and each time a new session is requeste
 - add translation files
 - rework refresh logic aligned with pihole
 - encrypt password
+- add detailed datapoints for Summary and Version for selected data
 
 ### 0.2.3 (2025-06-25)
 
