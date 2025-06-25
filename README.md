@@ -173,8 +173,7 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.2.3 (2025-06-25)
 
 - small documentation bugfix
 - adjust user agent and add trouble shooting info

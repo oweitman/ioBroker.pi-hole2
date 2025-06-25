@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "news": {
+      "0.2.3": {
+        "en": "small documentation bugfix\nadjust user agent and add trouble shooting info\nadd visualization example for versions\nadd visualization example for summary",
+        "de": "kleine dokumentation bugfix\nbenutzeragent anpassen und probleme schießen info hinzufügen\nvisualisierungsbeispiel für versionen hinzufügen\nvisualisierungsbeispiel für zusammenfassung hinzufügen",
+        "ru": "небольшая документация bugfix\nнастройте пользовательский агент и добавьте информацию о трудностях съемки\nдобавить пример визуализации для версий\nдобавить пример визуализации для резюме",
+        "pt": "correcção de erros de documentação pequena\najustar o agente do usuário e adicionar informações de disparo de problemas\nadicionar exemplo de visualização para versões\nadicionar exemplo de visualização para resumo",
+        "nl": "kleine documentatiebugfix\nuser agent aan te passen en toe te voegen probleem opname info\nvisualisatie voorbeeld voor versies toevoegen\nvisualisatie voorbeeld voor samenvatting toevoegen",
+        "fr": "petit bugfix documentation\najuster l'agent utilisateur et ajouter des informations de prise de vue de problèmes\najouter l'exemple de visualisation pour les versions\najouter un exemple de visualisation pour le résumé",
+        "it": "piccolo bugfix di documentazione\nregolare l'agente utente e aggiungere problemi di scatto informazioni\naggiungere esempio di visualizzazione per le versioni\naggiungere esempio di visualizzazione per sommario",
+        "es": "pequeña documentación bugfix\najustar el agente de usuario y añadir información de disparo de problemas\nañadir ejemplo de visualización para versiones\nañadir ejemplo de visualización para resumen",
+        "pl": "mały bugfix dokumentacji\ndostosować agenta użytkownika i dodać problem strzelanie info\ndodaj przykład wizualizacji wersji\ndodaj przykład wizualizacji podsumowania",
+        "uk": "мала документація\nналаштувати агента користувача і додати інформацію про несправностей\nдодати приклад візуалізації для версій\nдодати приклад візуалізації для резюме",
+        "zh-cn": "小文档错误修正\n调整用户代理并添加故障射击信息\n为版本添加可视化示例\n为摘要添加可视化示例"
+      },
       "0.2.2": {
         "en": "fix github action file",
         "de": "github action file",
