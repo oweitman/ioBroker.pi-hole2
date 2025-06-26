@@ -59,19 +59,26 @@ Go to <http://pi.hole/api/docs/#> and enter your password and press login button
 
 ```javascript
 sendTo(
-  "pi-hole2.0",
-  "piholeapi",
-  {
-    method: "GET",
-    endpoint: "/history/clients",
-    params: {
-      N: 20,
+    'pi-hole2.0',
+    'piholeapi',
+    {
+        method: 'GET',
+        endpoint: '/history/clients',
+        params: {
+            N: 20,
+        },
     },
-  },
-  function (data) {
-    console.log(data);
-  },
+    function (data) {
+        console.log(data);
+    },
 );
+```
+
+If you want to use timestamps as parameters, please note that pi-hole uses UNIX timestamps.
+These count the seconds since January 1, 1970. A JavaScript timestamp can be divided by 1000:
+
+```javascript
+new Date('2025-02-01#12:34:56').getTime() / 1000;
 ```
 
 ## Visualization
