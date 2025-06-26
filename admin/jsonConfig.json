@@ -1,101 +1,96 @@
 {
-  "i18n": true,
-  "type": "panel",
-  "items": {
-    "option1": {
-      "type": "checkbox",
-      "label": "option1",
-      "newLine": true
-    },
-    "address": {
-      "type": "text",
-      "label": "address",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "password": {
-      "type": "password",
-      "label": "password",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "enabledetailedsummary": {
-      "type": "checkbox",
-      "label": "enabledetailedsummary",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "enabledetailedversion": {
-      "type": "checkbox",
-      "label": "enabledetailedversion",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "refreshSummary": {
-      "type": "number",
-      "label": "refresh Summary (seconds)",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "refreshBlocking": {
-      "type": "number",
-      "label": "refresh Blocking (seconds)",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "refreshSystem": {
-      "type": "number",
-      "label": "refresh System (seconds)",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "refreshTop": {
-      "type": "number",
-      "label": "refresh Top (seconds)",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
-    },
-    "refreshVersion": {
-      "type": "number",
-      "label": "refresh Version (seconds)",
-      "newLine": true,
-      "xs": 12,
-      "sm": 12,
-      "md": 6,
-      "lg": 4,
-      "xl": 4
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "address": {
+            "type": "text",
+            "label": "address",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "password": {
+            "type": "password",
+            "label": "password",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "enabledetailedsummary": {
+            "type": "checkbox",
+            "label": "enabledetailedsummary",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "enabledetailedversion": {
+            "type": "checkbox",
+            "label": "enabledetailedversion",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "refreshSummary": {
+            "type": "number",
+            "label": "refresh Summary (seconds)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "refreshBlocking": {
+            "type": "number",
+            "label": "refresh Blocking (seconds)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "refreshSystem": {
+            "type": "number",
+            "label": "refresh System (seconds)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "refreshTop": {
+            "type": "number",
+            "label": "refresh Top (seconds)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "refreshVersion": {
+            "type": "number",
+            "label": "refresh Version (seconds)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        }
     }
-  }
 }
