@@ -158,11 +158,11 @@ and the following template:
 - ~~interval time~~
 - ~~activate / decativate blocking~~
 - ~~activating / deactivating timeinterval~~
-- version ? dont know details
+- ~~version~~
 - ~~versions~~
+- ~~summary~~
 - type
 - summaryRaw ? dont know details
-- ~~summary~~
 - topItems ? dont know details
 - getQuerySources ? dont know details
 - overTimeData10mins ? dont know details
@@ -172,7 +172,7 @@ and the following template:
 
 - ~~sendTo Functions to control and get informations with parameters~~
 
-## Not Implemented or planned functione
+## Not Implemented or planned functions
 
 - 2FA
 - https protocol (possible but not tested)
@@ -192,6 +192,16 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- fix repochecker issues
+- update packages
+- remove history datapoint
+- add jsdoc
+- fix Blockingtime enabling
+- fix datapoint coloring
+
 ### 0.4.0 (2025-06-25)
 
 - Make extraction of detail values ​​for version/summary deactivatable
