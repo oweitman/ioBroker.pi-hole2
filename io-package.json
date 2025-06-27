@@ -1,165 +1,178 @@
 {
-    "common": {
-        "name": "pi-hole2",
-        "version": "0.4.0",
-        "news": {
-            "0.4.0": {
-                "en": "Make extraction of detail values ​​for version/summary deactivatable",
-                "de": "Extrahieren von Detailwerten für Version/summary deaktiviert",
-                "ru": "Сделайте извлечение значений детализации для деактивируемой версии/резюме",
-                "pt": "Fazer a extração dos valores de detalhe para a versão/síntese desativada",
-                "nl": "Verwijderen van detailwaarden voor versie/samenvatting deactiveren",
-                "fr": "Faire l'extraction des valeurs de détail pour la version/résumé déactivable",
-                "it": "Estrazione dei valori di dettaglio per la versione/sommario disattivabile",
-                "es": "Realizar la extracción de los valores de detalle para la versión/desactivación total",
-                "pl": "Wykonaj ekstrakcję wartości szczegółowych dla wersji / podsumowania dezaktywowane",
-                "uk": "Зробіть вилучення докладних значень для версії/сумаційного деактивату",
-                "zh-cn": "使取出版本/摘要去功能化的详细值"
-            },
-            "0.3.0": {
-                "en": "add translation files\nrework refresh logic aligned with pihole\nencrypt password\nadd detailed datapoints for Summary and Version for selected data",
-                "de": "übersetzungsdateien hinzufügen\nrefresh-logik mit pihole\npasswort verschlüsseln\ndetaillierte Datenpunkte für Zusammenfassung und Version für ausgewählte Daten hinzufügen",
-                "ru": "добавить файлы перевода\nпереработка логики обновления, выровненной с отверстием\nшифровать пароль\nдобавить подробные точки данных для резюме и версии для выбранных данных",
-                "pt": "adicionar arquivos de tradução\nrefazer a lógica de atualização alinhada com pihole\ncriptografar senha\nadicionar pontos de dados detalhados para Resumo e Versão para dados selecionados",
-                "nl": "vertaalbestanden toevoegen\nrework refresh logica uitgelijnd met pihole\nwachtwoord versleutelen\ngedetailleerde datapunten voor samenvatting en versie toevoegen voor geselecteerde gegevens",
-                "fr": "ajouter des fichiers de traduction\nretravailler la logique de rafraîchissement alignée sur le trou\nchiffrer le mot de passe\najouter des points de données détaillés pour le résumé et la version pour certaines données",
-                "it": "aggiungere i file di traduzione\nrielaborare la logica rinfrescante allineata con foro\ncrittografia password\naggiungere i datapoint dettagliati per Riepilogo e Versione per i dati selezionati",
-                "es": "añadir archivos de traducción\nrework fresco lógica alineado con el agujero\ncontraseña de cifrado\nañadir datos detallados para Resumen y Versión para datos seleccionados",
-                "pl": "dodawanie plików tłumaczeniowych\nodświeżanie logiki dopasowane do otworu\nszyfrowanie hasła\ndodaj szczegółowe punkty danych dla podsumowania i wersji dla wybranych danych",
-                "uk": "додати файли перекладу\nвідновлення логіки, що вирівнюється з фіксатором\nзашифрувати пароль\nдодати докладні точки даних для Резюме та Версія для вибраних даних",
-                "zh-cn": "添加翻译文件\n根据 pihole 重修刷新逻辑\n加密密码\n为选定数据的概要和版本添加详细数据点"
-            },
-            "0.2.3": {
-                "en": "small documentation bugfix\nadjust user agent and add trouble shooting info\nadd visualization example for versions\nadd visualization example for summary",
-                "de": "kleine dokumentation bugfix\nbenutzeragent anpassen und probleme schießen info hinzufügen\nvisualisierungsbeispiel für versionen hinzufügen\nvisualisierungsbeispiel für zusammenfassung hinzufügen",
-                "ru": "небольшая документация bugfix\nнастройте пользовательский агент и добавьте информацию о трудностях съемки\nдобавить пример визуализации для версий\nдобавить пример визуализации для резюме",
-                "pt": "correcção de erros de documentação pequena\najustar o agente do usuário e adicionar informações de disparo de problemas\nadicionar exemplo de visualização para versões\nadicionar exemplo de visualização para resumo",
-                "nl": "kleine documentatiebugfix\nuser agent aan te passen en toe te voegen probleem opname info\nvisualisatie voorbeeld voor versies toevoegen\nvisualisatie voorbeeld voor samenvatting toevoegen",
-                "fr": "petit bugfix documentation\najuster l'agent utilisateur et ajouter des informations de prise de vue de problèmes\najouter l'exemple de visualisation pour les versions\najouter un exemple de visualisation pour le résumé",
-                "it": "piccolo bugfix di documentazione\nregolare l'agente utente e aggiungere problemi di scatto informazioni\naggiungere esempio di visualizzazione per le versioni\naggiungere esempio di visualizzazione per sommario",
-                "es": "pequeña documentación bugfix\najustar el agente de usuario y añadir información de disparo de problemas\nañadir ejemplo de visualización para versiones\nañadir ejemplo de visualización para resumen",
-                "pl": "mały bugfix dokumentacji\ndostosować agenta użytkownika i dodać problem strzelanie info\ndodaj przykład wizualizacji wersji\ndodaj przykład wizualizacji podsumowania",
-                "uk": "мала документація\nналаштувати агента користувача і додати інформацію про несправностей\nдодати приклад візуалізації для версій\nдодати приклад візуалізації для резюме",
-                "zh-cn": "小文档错误修正\n调整用户代理并添加故障射击信息\n为版本添加可视化示例\n为摘要添加可视化示例"
-            },
-            "0.2.2": {
-                "en": "fix github action file",
-                "de": "github action file",
-                "ru": "исправить файл github action",
-                "pt": "corrigir o arquivo de ação github",
-                "nl": "fix github actiebestand",
-                "fr": "corriger le fichier d'action github",
-                "it": "correzione del file github action",
-                "es": "arreglar github archivo de acción",
-                "pl": "fix github action",
-                "uk": "виправити файл дії github",
-                "zh-cn": "固定 github 动作文件"
-            }
-        },
-        "titleLang": {
-            "en": "Pi-Hole 2",
-            "de": "Pi-Hole 2",
-            "ru": "PI-HOLE 2",
-            "pt": "Pi-burro 2",
-            "nl": "Pi-hole 2",
-            "fr": "Pi-trous 2",
-            "it": "Pi-hole 2",
-            "es": "Pi-Hole 2",
-            "pl": "Pi-hole 2",
-            "uk": "Pi-отвір 2",
-            "zh-cn": "pi-hole 2"
-        },
-        "desc": {
-            "en": "Manage a pi-hole installation",
-            "de": "Verwalten Sie eine PI-Loch-Installation",
-            "ru": "Управлять установкой PI-Hole",
-            "pt": "Gerenciar uma instalação de buraco PI",
-            "nl": "Beheer een PI-hole-installatie",
-            "fr": "Gérer une installation de trou Pi",
-            "it": "Gestisci un'installazione PI-Hole",
-            "es": "Administre una instalación de Pi-Hole",
-            "pl": "Zarządzaj instalacją PI-Hole",
-            "uk": "Керуйте встановленням PI-лунки",
-            "zh-cn": "管理PI孔安装"
-        },
-        "authors": [
-            "oweitman <oweitman@gmx.de>"
-        ],
-        "keywords": [
-            "pi-hole2"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "pi-hole2.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.pi-hole2/main/admin/pi-hole2.png",
-        "readme": "https://github.com/oweitman/ioBroker.pi-hole2/blob/main/README.md",
-        "loglevel": "info",
-        "tier": 3,
-        "mode": "daemon",
-        "type": "network",
-        "messagebox": true,
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.0.23"
-            }
-        ]
+  "common": {
+    "name": "pi-hole2",
+    "version": "0.4.1",
+    "news": {
+      "0.4.1": {
+        "en": "fix repochecker issues\nupdate packages\nremove history datapoint\nadd jsdoc\nfix Blockingtime enabling\nfix datapoint coloring",
+        "de": "repochecker probleme beheben\nupdate-pakete\ngeschichte datapoint entfernen\njsdoc hinzufügen\nblockierzeit aktivieren\nfix datapoint färbung",
+        "ru": "исправить проблемы с репочекером\nобновление пакетов\nудалить history datapoint\nдобавить jsdoc\nустранение блокировки, позволяющей\nфиксировать цвет точки данных",
+        "pt": "corrigir problemas com o repochecker\natualizar pacotes\nremover o ponto de dados do histórico\nadicionar jsdoc\nactivar o tempo de bloqueio\ncorrigir a coloração do ponto de dados",
+        "nl": "repochecker problemen oplossen\npakketten bijwerken\ngeschiedenisdatapunt verwijderen\njsdoc toevoegen\nfix Blokkeren tijd inschakelen\nfix datapoint kleuring",
+        "fr": "résoudre les problèmes de repochecker\nmettre à jour les paquets\nsupprimer le point de données d'historique\najouter jsdoc\ncorrection de l'activation du temps de blocage\nfixer la coloration des points de données",
+        "it": "risolvere problemi di repochecker\npacchetti di aggiornamento\nrimuovere datapoint cronologia\naggiungi jsdoc\ncorrezione del tempo di blocco\ncorrezione della colorazione datapoint",
+        "es": "solucionar problemas de repochecker\nactualizar paquetes\neliminar datos de historia\nañadir jsdoc\najuste de tiempo de bloqueo\nfijar punto de datos para colorear",
+        "pl": "naprawianie problemów repochecker\naktualizacja pakietów\nusuń punkt danych historii\ndodaj jsdoc\nnaprawić Blockingtime włączający\nnaprawić kolorowanie datapoint",
+        "uk": "виправити проблеми репочекера\nоновлення пакетів\nвидалити точку даних історії\nдодати jsdoc\nфіксувати блокування часу\nфіксувати фарбування точок даних",
+        "zh-cn": "修复再检查器问题\n更新软件包\n删除历史数据点\n添加jsdoc语\n设置屏蔽时间启用\n固定数据点颜色"
+      },
+      "0.4.0": {
+        "en": "Make extraction of detail values ​​for version/summary deactivatable",
+        "de": "Extrahieren von Detailwerten für Version/summary deaktiviert",
+        "ru": "Сделайте извлечение значений детализации для деактивируемой версии/резюме",
+        "pt": "Fazer a extração dos valores de detalhe para a versão/síntese desativada",
+        "nl": "Verwijderen van detailwaarden voor versie/samenvatting deactiveren",
+        "fr": "Faire l'extraction des valeurs de détail pour la version/résumé déactivable",
+        "it": "Estrazione dei valori di dettaglio per la versione/sommario disattivabile",
+        "es": "Realizar la extracción de los valores de detalle para la versión/desactivación total",
+        "pl": "Wykonaj ekstrakcję wartości szczegółowych dla wersji / podsumowania dezaktywowane",
+        "uk": "Зробіть вилучення докладних значень для версії/сумаційного деактивату",
+        "zh-cn": "使取出版本/摘要去功能化的详细值"
+      },
+      "0.3.0": {
+        "en": "add translation files\nrework refresh logic aligned with pihole\nencrypt password\nadd detailed datapoints for Summary and Version for selected data",
+        "de": "übersetzungsdateien hinzufügen\nrefresh-logik mit pihole\npasswort verschlüsseln\ndetaillierte Datenpunkte für Zusammenfassung und Version für ausgewählte Daten hinzufügen",
+        "ru": "добавить файлы перевода\nпереработка логики обновления, выровненной с отверстием\nшифровать пароль\nдобавить подробные точки данных для резюме и версии для выбранных данных",
+        "pt": "adicionar arquivos de tradução\nrefazer a lógica de atualização alinhada com pihole\ncriptografar senha\nadicionar pontos de dados detalhados para Resumo e Versão para dados selecionados",
+        "nl": "vertaalbestanden toevoegen\nrework refresh logica uitgelijnd met pihole\nwachtwoord versleutelen\ngedetailleerde datapunten voor samenvatting en versie toevoegen voor geselecteerde gegevens",
+        "fr": "ajouter des fichiers de traduction\nretravailler la logique de rafraîchissement alignée sur le trou\nchiffrer le mot de passe\najouter des points de données détaillés pour le résumé et la version pour certaines données",
+        "it": "aggiungere i file di traduzione\nrielaborare la logica rinfrescante allineata con foro\ncrittografia password\naggiungere i datapoint dettagliati per Riepilogo e Versione per i dati selezionati",
+        "es": "añadir archivos de traducción\nrework fresco lógica alineado con el agujero\ncontraseña de cifrado\nañadir datos detallados para Resumen y Versión para datos seleccionados",
+        "pl": "dodawanie plików tłumaczeniowych\nodświeżanie logiki dopasowane do otworu\nszyfrowanie hasła\ndodaj szczegółowe punkty danych dla podsumowania i wersji dla wybranych danych",
+        "uk": "додати файли перекладу\nвідновлення логіки, що вирівнюється з фіксатором\nзашифрувати пароль\nдодати докладні точки даних для Резюме та Версія для вибраних даних",
+        "zh-cn": "添加翻译文件\n根据 pihole 重修刷新逻辑\n加密密码\n为选定数据的概要和版本添加详细数据点"
+      },
+      "0.2.3": {
+        "en": "small documentation bugfix\nadjust user agent and add trouble shooting info\nadd visualization example for versions\nadd visualization example for summary",
+        "de": "kleine dokumentation bugfix\nbenutzeragent anpassen und probleme schießen info hinzufügen\nvisualisierungsbeispiel für versionen hinzufügen\nvisualisierungsbeispiel für zusammenfassung hinzufügen",
+        "ru": "небольшая документация bugfix\nнастройте пользовательский агент и добавьте информацию о трудностях съемки\nдобавить пример визуализации для версий\nдобавить пример визуализации для резюме",
+        "pt": "correcção de erros de documentação pequena\najustar o agente do usuário e adicionar informações de disparo de problemas\nadicionar exemplo de visualização para versões\nadicionar exemplo de visualização para resumo",
+        "nl": "kleine documentatiebugfix\nuser agent aan te passen en toe te voegen probleem opname info\nvisualisatie voorbeeld voor versies toevoegen\nvisualisatie voorbeeld voor samenvatting toevoegen",
+        "fr": "petit bugfix documentation\najuster l'agent utilisateur et ajouter des informations de prise de vue de problèmes\najouter l'exemple de visualisation pour les versions\najouter un exemple de visualisation pour le résumé",
+        "it": "piccolo bugfix di documentazione\nregolare l'agente utente e aggiungere problemi di scatto informazioni\naggiungere esempio di visualizzazione per le versioni\naggiungere esempio di visualizzazione per sommario",
+        "es": "pequeña documentación bugfix\najustar el agente de usuario y añadir información de disparo de problemas\nañadir ejemplo de visualización para versiones\nañadir ejemplo de visualización para resumen",
+        "pl": "mały bugfix dokumentacji\ndostosować agenta użytkownika i dodać problem strzelanie info\ndodaj przykład wizualizacji wersji\ndodaj przykład wizualizacji podsumowania",
+        "uk": "мала документація\nналаштувати агента користувача і додати інформацію про несправностей\nдодати приклад візуалізації для версій\nдодати приклад візуалізації для резюме",
+        "zh-cn": "小文档错误修正\n调整用户代理并添加故障射击信息\n为版本添加可视化示例\n为摘要添加可视化示例"
+      },
+      "0.2.2": {
+        "en": "fix github action file",
+        "de": "github action file",
+        "ru": "исправить файл github action",
+        "pt": "corrigir o arquivo de ação github",
+        "nl": "fix github actiebestand",
+        "fr": "corriger le fichier d'action github",
+        "it": "correzione del file github action",
+        "es": "arreglar github archivo de acción",
+        "pl": "fix github action",
+        "uk": "виправити файл дії github",
+        "zh-cn": "固定 github 动作文件"
+      }
     },
-    "encryptedNative": [
-        "password"
-    ],
-    "protectedNative": [
-        "password"
-    ],
-    "native": {
-        "address": "http://pi.hole",
-        "password": "",
-        "protocol": "http",
-        "port": "80",
-        "enabledetailedsummary": true,
-        "enabledetailedversion": true,
-        "refreshSummary": "1",
-        "refreshBlocking": "10",
-        "refreshSystem": "20",
-        "refreshTop": "60",
-        "refreshVersion": "120"
+    "titleLang": {
+      "en": "Pi-Hole 2",
+      "de": "Pi-Hole 2",
+      "ru": "PI-HOLE 2",
+      "pt": "Pi-burro 2",
+      "nl": "Pi-hole 2",
+      "fr": "Pi-trous 2",
+      "it": "Pi-hole 2",
+      "es": "Pi-Hole 2",
+      "pl": "Pi-hole 2",
+      "uk": "Pi-отвір 2",
+      "zh-cn": "pi-hole 2"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "Manage a pi-hole installation",
+      "de": "Verwalten Sie eine PI-Loch-Installation",
+      "ru": "Управлять установкой PI-Hole",
+      "pt": "Gerenciar uma instalação de buraco PI",
+      "nl": "Beheer een PI-hole-installatie",
+      "fr": "Gérer une installation de trou Pi",
+      "it": "Gestisci un'installazione PI-Hole",
+      "es": "Administre una instalación de Pi-Hole",
+      "pl": "Zarządzaj instalacją PI-Hole",
+      "uk": "Керуйте встановленням PI-лунки",
+      "zh-cn": "管理PI孔安装"
+    },
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "pi-hole2"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "pi-hole2.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.pi-hole2/main/admin/pi-hole2.png",
+    "readme": "https://github.com/oweitman/ioBroker.pi-hole2/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "network",
+    "messagebox": true,
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.0.23"
+      }
     ]
+  },
+  "encryptedNative": [
+    "password"
+  ],
+  "protectedNative": [
+    "password"
+  ],
+  "native": {
+    "address": "http://pi.hole",
+    "password": "",
+    "protocol": "http",
+    "port": "80",
+    "enabledetailedsummary": true,
+    "enabledetailedversion": true,
+    "refreshSummary": "1",
+    "refreshBlocking": "10",
+    "refreshSystem": "20",
+    "refreshTop": "60",
+    "refreshVersion": "120"
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Device or service connected",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
