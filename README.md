@@ -196,6 +196,7 @@ You have restarted the adapter too often and each time a new session is requeste
 ### **WORK IN PROGRESS**
 
 - set rejectUnauthorized to false
+- remove some double jsdoc blocks
 
 ### 0.4.1 (2025-06-27)
 
