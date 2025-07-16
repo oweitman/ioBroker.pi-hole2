@@ -24,7 +24,7 @@ class PiHole2 extends utils.Adapter {
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on('objectChange', this.onObjectChange.bind(this));
         this.on('message', this.onMessage.bind(this));
-        this.on('unload', this.onUnload.bind(this));
+        // this.on('unload', this.onUnload.bind(this));
     }
 
     /**
@@ -50,19 +50,19 @@ class PiHole2 extends utils.Adapter {
      *
      * @param {() => void} callback callback to adapter
      */
-    onUnload(callback) {
-        try {
-            // Here you must clear all timeouts or intervals that may still be active
-            // clearTimeout(timeout1);
-            // clearTimeout(timeout2);
-            // ...
-            // clearInterval(interval1);
+    // onUnload(callback) {
+    //     try {
+    //         // Here you must clear all timeouts or intervals that may still be active
+    //         // clearTimeout(timeout1);
+    //         // clearTimeout(timeout2);
+    //         // ...
+    //         // clearInterval(interval1);
 
-            callback();
-        } catch /* (e) */ {
-            callback();
-        }
-    }
+    //         callback();
+    //     } catch /* (e) */ {
+    //         callback();
+    //     }
+    // }
 
     // If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
     // You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
