@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "news": {
+      "0.4.2": {
+        "en": "- set rejectUnauthorized to false\n- remove some double jsdoc blocks\n- fixed comments from adapter review\n\n    remove unload event, create datapoint \"Data\", adjust state roles, check and limit refresh input parameters, fix roles",
+        "de": "- abgelehnt Unautorisiert auf false\n- entfernen sie einige doppel jsdoc blöcke\n- feste kommentare von adapter review\n\nentfernen Sie das Entladeereignis, erstellen Sie Datenpunkt \"Daten\", ändern Sie die Zustandsrollen, überprüfen und begrenzen Sie die Refresh-Eingabeparameter, fix Rollen",
+        "ru": "- отклонить Несанкционированное ложное\n- удалить двойные блоки jsdoc\n- фиксированные комментарии к обзору адаптера\n\nудалить событие разгрузки, создать точку данных «Данные», настроить роли состояния, проверить и ограничить параметры ввода обновления, исправить роли",
+        "pt": "- conjunto rejeitar Não autorizado para falso\n- remover alguns blocos jsdoc duplos\n- comentários fixos da revisão do adaptador\n\nremover evento de descarga, criar datapoint \"Data\", ajustar funções de estado, verificar e limitar parâmetros de entrada de atualização, corrigir funções",
+        "nl": "- set deposit Ongeautoriseerd tot vals\n- enkele dubbele jsdoc blokken verwijderen\n- vaste opmerkingen van adapter beoordeling\n\nverwijderen unload gebeurtenis, maken datapoint \"Data,\" aanpassen status rollen, controleren en beperken van de input parameters, fix rollen",
+        "fr": "- ensemble de rejet Non autorisé à faux\n- enlever quelques doubles blocs de jsdoc\n- commentaires fixes de l'examen de l'adaptateur\n\nsupprimer l'événement de décharge, créer le point de données, ajuster les rôles d'état, vérifier et limiter les paramètres d'entrée, fixer les rôles",
+        "it": "- rigetto impostato Non autorizzato al falso\n- rimuovere alcuni blocchi jsdoc doppio\n- commenti fissi dalla recensione adattatore\n\nrimuovere l'evento di scarico, creare datapoint \"Data\", regolare i ruoli di stato, controllare e limitare i parametri di input di aggiornamento, correggere i ruoli",
+        "es": "- Rechazo No autorizado a falso\n- quitar algunos bloques dobles jsdoc\n- comentarios fijos de la revisión del adaptador\n\neliminar el evento de descarga, crear el punto de datos \"Data\", ajustar los roles estatales, comprobar y limitar los parámetros de entrada de actualización, fijar roles",
+        "pl": "- set odrzut Nieautoryzowane do fałszywego\n- usunąć kilka podwójnych bloków jsdoc\n- stałe komentarze z przeglądu adaptera\n\nusunąć zdarzenie rozładowania, utworzyć punkt danych \"Dane\", dostosować role stanu, sprawdzić i ograniczyć parametry wejściowe odświeżania, naprawić role",
+        "uk": "- відхилити відхилення Несанкціонований\n- видалити деякі блоки подвійного jsdoc\n- виправлені коментарі з огляду адаптера\n\nвидалення вивантажувального заходу, створення точки даних \"Дата\", регулювання ролі держави, перевірки та обмеження параметрів вводу, фіксації ролей",
+        "zh-cn": "- 设定拒绝 未经批准伪造\n- 移除一些双jsdoc块\n- 适配器审查的固定评论\n\n删除卸载事件, 创建“ 数据” 数据点, 调整状态角色, 检查和限制刷新输入参数, 固定角色"
+      },
       "0.4.1": {
         "en": "fix repochecker issues\nupdate packages\nremove history datapoint\nadd jsdoc\nfix Blockingtime enabling\nfix datapoint coloring",
         "de": "repochecker probleme beheben\nupdate-pakete\ngeschichte datapoint entfernen\njsdoc hinzufügen\nblockierzeit aktivieren\nfix datapoint färbung",

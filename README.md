@@ -29,7 +29,7 @@ Michael Schuster <development@unltd-networx.de>.
 
 1. Install the adpater
 
-2. Fill in the fields of the adapter-admin. The url of the pi-hole device, the password, and obligatory the intervall to renew the values of the pi-hole (renew statistic in iobroker)
+2. Fill in the fields of the adapter-admin. The url of the pi-hole device, the password, and obligatory the intervall to renew the values of the pi-hole (renew statistic in iobroker). Input in all refresh fields only between 1 second and 86400 seconds (24h) possible.
 
 ## Functions
 
@@ -192,11 +192,13 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.4.2 (2025-07-16)
 
 - set rejectUnauthorized to false
 - remove some double jsdoc blocks
+- fixed comments from adapter review
+
+    remove unload event, create datapoint "Data", adjust state roles, check and limit refresh input parameters, fix roles
 
 ### 0.4.1 (2025-06-27)
 
