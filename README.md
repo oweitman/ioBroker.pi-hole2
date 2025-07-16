@@ -192,6 +192,11 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 1.0.0 (2025-07-16)
+
+- If the adapter was already installed, please remove all existing data points of the adapter and restart the adapter.
+- first beta channel release
+
 ### 0.4.2 (2025-07-16)
 
 - set rejectUnauthorized to false
