@@ -53,7 +53,8 @@ The data points are highlighted green/red when the feature is enabled/disabled.
 
 The sendTo function is used to send commands to the pi-hole device.
 You can try the api on your local machine.
-Go to <http://pi.hole/api/docs/#> and enter your password and press login button.
+Go to [http://pihole/api/docs/#](http://pihole/api/docs/#), enter your password, and click the **Login** button.
+If the domain `pihole` doesn't work, please check the hostname of your pi-hole instance in the top right corner of the dashboard page.
 
 #### Example
 
@@ -192,6 +193,7 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 1.0.0 (2025-07-16)
 
 - If the adapter was already installed, please remove all existing data points of the adapter and restart the adapter.
