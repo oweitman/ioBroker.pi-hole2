@@ -194,6 +194,10 @@ You have restarted the adapter too often and each time a new session is requeste
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- add update indicators for different pihole components in the Data/Versions datapoints
+
 ### 1.0.0 (2025-07-16)
 
 - If the adapter was already installed, please remove all existing data points of the adapter and restart the adapter.
