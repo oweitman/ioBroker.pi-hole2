@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "news": {
+      "1.1.0": {
+        "en": "add update indicators for different pihole components in the Data/Versions datapoints",
+        "de": "update-Indikatoren für verschiedene Pihole-Komponenten in den Data/Versions-Datenpunkten hinzufügen",
+        "ru": "добавить индикаторы обновления для различных компонентов в точках данных Data/Versions",
+        "pt": "adicionar indicadores de atualização para diferentes componentes pihole nos pontos de dados Data/Versions",
+        "nl": "update-indicatoren voor verschillende pihole componenten toevoegen in de Data/Versions datapoints",
+        "fr": "ajouter des indicateurs de mise à jour pour les différents éléments du trou dans les points de données Data/Versions",
+        "it": "aggiungere indicatori di aggiornamento per diversi componenti di foro nei datapoint Data/Versions",
+        "es": "añadir indicadores de actualización para diferentes componentes de agujeros en los puntos de datos Data/Versions",
+        "pl": "dodaj wskaźniki aktualizacji dla różnych elementów przegród w punktach danych Dane / Wersje",
+        "uk": "додавати індикатори оновлення для різних компонентів потоку у точках даних даних даних даних даних / даних",
+        "zh-cn": "在 Data/Version 数据点中添加不同 pihole 组件的更新指标"
+      },
       "1.0.0": {
         "en": "If the adapter was already installed, please remove all existing data points of the adapter and restart the adapter.\nfirst beta channel release",
         "de": "Wenn der Adapter bereits installiert ist, entfernen Sie bitte alle vorhandenen Datenpunkte des Adapters und starten Sie den Adapter neu.\nerste beta-kanal-release",
@@ -80,19 +93,6 @@
         "pl": "mały bugfix dokumentacji\ndostosować agenta użytkownika i dodać problem strzelanie info\ndodaj przykład wizualizacji wersji\ndodaj przykład wizualizacji podsumowania",
         "uk": "мала документація\nналаштувати агента користувача і додати інформацію про несправностей\nдодати приклад візуалізації для версій\nдодати приклад візуалізації для резюме",
         "zh-cn": "小文档错误修正\n调整用户代理并添加故障射击信息\n为版本添加可视化示例\n为摘要添加可视化示例"
-      },
-      "0.2.2": {
-        "en": "fix github action file",
-        "de": "github action file",
-        "ru": "исправить файл github action",
-        "pt": "corrigir o arquivo de ação github",
-        "nl": "fix github actiebestand",
-        "fr": "corriger le fichier d'action github",
-        "it": "correzione del file github action",
-        "es": "arreglar github archivo de acción",
-        "pl": "fix github action",
-        "uk": "виправити файл дії github",
-        "zh-cn": "固定 github 动作文件"
       }
     },
     "titleLang": {
