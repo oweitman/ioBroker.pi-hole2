@@ -40,11 +40,12 @@
         "@iobroker/testing": "^5.1.1",
         "@tsconfig/node20": "^20.1.6",
         "@types/node": "^24.1.0",
+        "nyc": "^17.1.0",
         "typescript": "~5.8.3"
     },
     "main": "main.js",
     "files": [
-        "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).{json,json5}",
+        "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|eslint.config.mjs|prettier.config.mjs).{json,json5}",
         "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
         "lib/",
         "www/",
@@ -57,6 +58,7 @@
         "test:package": "mocha test/package --exit",
         "test:integration": "mocha test/integration --exit",
         "test": "npm run test:js && npm run test:package",
+        "coverage": "nyc npm run test:js && nyc report --reporter=lcovonly",
         "check": "tsc --noEmit -p tsconfig.check.json",
         "lint": "eslint -c eslint.config.mjs .",
         "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.pi-hole2 --local --noinfo",
