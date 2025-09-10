@@ -54,11 +54,11 @@
         "main.js"
     ],
     "scripts": {
-        "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
+        "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
         "test:package": "mocha test/package --exit",
         "test:integration": "mocha test/integration --exit",
         "test": "npm run test:js && npm run test:package",
-        "coverage": "nyc npm run test:js && nyc report --reporter=lcovonly",
+        "coverage": "nyc npm run test:js && nyc report --reporter=lcovonly --reporter=html",
         "check": "tsc --noEmit -p tsconfig.check.json",
         "lint": "eslint -c eslint.config.mjs .",
         "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.pi-hole2 --local --noinfo",

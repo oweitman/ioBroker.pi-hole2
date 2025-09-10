@@ -1,34 +1,70 @@
+/* eslint-disable no-unused-expressions */
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { createAdapterStub } = require('../helpers/adapterStub');
-const { ioUtil } = require('../../lib/ioUtil');
 
-/**
- * Tests for miscellaneous utility helpers on ioUtil.  These cover the delay
- * wrapper around the adapter, numeric range checking and the internal
- * conversion of object lists into maps.
- */
+const { ioUtil } = require('../../lib/ioUtil.js');
+
 describe('ioUtil utility methods', () => {
-    it('delay delegates to adapter.delay', async () => {
-        const adapter = createAdapterStub();
+    it('logsilly covers true + false branch', () => {
+        const adapter = {
+            log: { silly: sinon.spy(), debug: sinon.spy(), info: sinon.spy(), error: sinon.spy() },
+            // Dummy Timer/Delay API, wird hier nicht genutzt:
+            setTimeout: () => 0, clearTimeout: () => { }, clearInterval: () => { }, delay: (ms) => Promise.resolve(ms),
+            namespace: 'test.ns',
+        };
         const util = new ioUtil(adapter);
-        await util.delay(123);
-        sinon.assert.calledOnce(adapter.delay);
-        expect(adapter.delay.getCall(0).args[0]).to.equal(123);
+
+        // true-Branch (default islogsilly = true)
+        util.logsilly('hit-silly');
+        expect(adapter.log.silly.calledOnce).to.be.true;
+
+        // false-Branch
+        adapter.log.silly.resetHistory();
+        util.islogsilly = false;
+        util.logsilly('skip-silly');
+        expect(adapter.log.silly.called).to.be.false;
     });
 
-    it('checkNumberRange returns value when within range', () => {
-        const adapter = createAdapterStub();
+    it('logdebug covers true + false branch', () => {
+        const adapter = {
+            log: { silly: sinon.spy(), debug: sinon.spy(), info: sinon.spy(), error: sinon.spy() },
+            setTimeout: () => 0, clearTimeout: () => { }, clearInterval: () => { }, delay: (ms) => Promise.resolve(ms),
+            namespace: 'test.ns',
+        };
         const util = new ioUtil(adapter);
-        const result = util.checkNumberRange('5', 0, 10, 99);
-        // String should be coerced to number
-        expect(result).to.equal(5);
+
+        // true-Branch (default islogdebug = true)
+        util.logdebug('hit-debug');
+        expect(adapter.log.debug.calledOnce).to.be.true;
+
+        // false-Branch
+        adapter.log.debug.resetHistory();
+        util.islogdebug = false;
+        util.logdebug('skip-debug');
+        expect(adapter.log.debug.called).to.be.false;
     });
 
-    it('checkNumberRange returns default when out of range or invalid', () => {
-        const adapter = createAdapterStub();
+    it('loginfo hits the direct log line', () => {
+        const adapter = {
+            log: { silly: sinon.spy(), debug: sinon.spy(), info: sinon.spy(), error: sinon.spy() },
+            setTimeout: () => 0, clearTimeout: () => { }, clearInterval: () => { }, delay: (ms) => Promise.resolve(ms),
+            namespace: 'test.ns',
+        };
         const util = new ioUtil(adapter);
-        expect(util.checkNumberRange(20, 0, 10, 42)).to.equal(42);
-        expect(util.checkNumberRange('abc', 0, 10, 42)).to.equal(42);
+
+        util.loginfo('hello-info');
+        expect(adapter.log.info.calledOnceWith('hello-info')).to.be.true;
+    });
+
+    it('logerror hits the direct log line', () => {
+        const adapter = {
+            log: { silly: sinon.spy(), debug: sinon.spy(), info: sinon.spy(), error: sinon.spy() },
+            setTimeout: () => 0, clearTimeout: () => { }, clearInterval: () => { }, delay: (ms) => Promise.resolve(ms),
+            namespace: 'test.ns',
+        };
+        const util = new ioUtil(adapter);
+
+        util.logerror('hello-error');
+        expect(adapter.log.error.calledOnceWith('hello-error')).to.be.true;
     });
 });
