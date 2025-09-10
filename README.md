@@ -6,6 +6,7 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.pi-hole2.svg)](https://www.npmjs.com/package/iobroker.pi-hole2)
 ![Number of Installations](https://iobroker.live/badges/pi-hole2-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/pi-hole2-stable.svg)
+[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/iobroker.pi-hole2?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.pi-hole2/blob/main/coverage/index.html)
 
 [![NPM](https://nodei.co/npm/iobroker.pi-hole2.png?downloads=true)](https://nodei.co/npm/iobroker.pi-hole2/)
 
@@ -193,6 +194,7 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 1.1.1 (2025-07-25)
 
 - fix translation
