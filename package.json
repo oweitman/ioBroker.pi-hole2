@@ -27,7 +27,7 @@
         "node": ">= 20"
     },
     "dependencies": {
-        "@iobroker/adapter-core": "^3.2.3",
+        "@iobroker/adapter-core": "^3.3.2",
         "undici": "^7.15.0"
     },
     "devDependencies": {
