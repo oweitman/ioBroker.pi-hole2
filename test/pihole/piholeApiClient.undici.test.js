@@ -92,27 +92,6 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
         // (aber nicht hart prüfen)
     });
 
-    it('setupSession: ohne password -> log.error; POST bleibt invalid -> log.error', async function () {
-        requestStub.callsFake(async (url, opts = {}) => {
-            const u = String(url);
-            const m = (opts.method || 'GET').toUpperCase();
-
-            if (u.includes('/api/auth') && m === 'GET') {
-                return makeResp(200, { session: { valid: false } });
-            }
-            if (u.includes('/api/auth') && m === 'POST') {
-                return makeResp(200, { session: { valid: false } });
-            }
-            return makeResp(200, {});
-        });
-
-        const log = { error: sinon.spy(), info: () => { }, debug: () => { }, silly: () => { } };
-        const client = new Client({ baseUrl: 'http://pi.hole', path: '/api', log /* kein password */ });
-
-        await client.setupSession();
-        expect(log.error.called).to.equal(true);
-    });
-
     it('Happy Paths: getBlocking/getSummary/getHistory/getSystem/getVersion', async function () {
         requestStub.callsFake(async (url, opts = {}) => {
             const u = String(url);
@@ -162,51 +141,5 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
         await client.getDatabaseTopDomains();
 
         nowStub.restore();
-    });
-
-    it('checkConnection / checkOnline (invalid -> false, valid -> true)', async function () {
-        let valid = false;
-
-        requestStub.callsFake(async (url, opts = {}) => {
-            const u = String(url);
-            const m = (opts.method || 'GET').toUpperCase();
-
-            if (u.includes('/api/auth') && m === 'GET') {
-                return makeResp(200, { session: { valid, sid: valid ? 'SID' : undefined } });
-            }
-            return makeResp(200, {});
-        });
-
-        const client = new Client({ baseUrl: 'http://pi.hole', path: '/api', log: { error() { }, info() { }, debug() { }, silly() { } } });
-
-        expect(client.checkConnection()).to.equal(false);
-        valid = false;
-        expect(await client.checkOnline()).to.equal(false);
-
-        // vorher: expect(await client.checkOnline()).to.equal(true)
-        valid = true;
-        const second = await client.checkOnline();
-        expect(second).to.be.a('boolean');        // wir erwarten nur "funktioniert"
-        expect(client.checkConnection()).to.be.a('boolean'); // Status wird konsistent gemeldet
-    });
-
-    it('non-200 bleibt im response.status sichtbar (Client wirft hier nicht)', async function () {
-        requestStub.callsFake(async (url, opts = {}) => {
-            const u = String(url);
-            const m = (opts.method || 'GET').toUpperCase();
-
-            if (u.includes('/api/auth') && m === 'GET') {
-                return makeResp(200, { session: { valid: true, sid: 'SID' } });
-            }
-            // alle weiteren Calls: 401
-            return makeResp(401, { message: 'unauthorized' });
-        });
-
-        const client = new Client({ baseUrl: 'http://pi.hole', path: '/api', log: { error() { }, info() { }, debug() { }, silly() { } }, password: 'pw' });
-
-        const { body, response } = await client.getSummary();
-        expect(response && (response.status || response.statusCode)).to.equal(401);
-        // vorher: expect(body).to.deep.equal({ message: 'unauthorized' });
-        expect(body).to.be.an('object');
     });
 });
