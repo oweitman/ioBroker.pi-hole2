@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.2.0-alpha.0",
+    "version": "1.2.0-alpha.1",
     "news": {
+      "1.2.0-alpha.1": {
+        "en": "fix errors",
+        "de": "fehler beheben",
+        "ru": "исправить ошибки",
+        "pt": "erros de correção",
+        "nl": "foutherstel",
+        "fr": "corriger les erreurs",
+        "it": "errori di correzione",
+        "es": "corrige errores",
+        "pl": "naprawić błędy",
+        "uk": "виправлення помилок",
+        "zh-cn": "修补错误"
+      },
       "1.2.0-alpha.0": {
         "en": "add test and coverage\nimprove and harden error handling",
         "de": "test und deckung hinzufügen\nfehlerbehandlung verbessern und aushärten",
@@ -80,19 +93,6 @@
         "pl": "naprawianie problemów repochecker\naktualizacja pakietów\nusuń punkt danych historii\ndodaj jsdoc\nnaprawić Blockingtime włączający\nnaprawić kolorowanie datapoint",
         "uk": "виправити проблеми репочекера\nоновлення пакетів\nвидалити точку даних історії\nдодати jsdoc\nфіксувати блокування часу\nфіксувати фарбування точок даних",
         "zh-cn": "修复再检查器问题\n更新软件包\n删除历史数据点\n添加jsdoc语\n设置屏蔽时间启用\n固定数据点颜色"
-      },
-      "0.4.0": {
-        "en": "Make extraction of detail values ​​for version/summary deactivatable",
-        "de": "Extrahieren von Detailwerten für Version/summary deaktiviert",
-        "ru": "Сделайте извлечение значений детализации для деактивируемой версии/резюме",
-        "pt": "Fazer a extração dos valores de detalhe para a versão/síntese desativada",
-        "nl": "Verwijderen van detailwaarden voor versie/samenvatting deactiveren",
-        "fr": "Faire l'extraction des valeurs de détail pour la version/résumé déactivable",
-        "it": "Estrazione dei valori di dettaglio per la versione/sommario disattivabile",
-        "es": "Realizar la extracción de los valores de detalle para la versión/desactivación total",
-        "pl": "Wykonaj ekstrakcję wartości szczegółowych dla wersji / podsumowania dezaktywowane",
-        "uk": "Зробіть вилучення докладних значень для версії/сумаційного деактивату",
-        "zh-cn": "使取出版本/摘要去功能化的详细值"
       }
     },
     "titleLang": {

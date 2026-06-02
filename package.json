@@ -1,6 +1,6 @@
 {
   "name": "iobroker.pi-hole2",
-  "version": "1.2.0-alpha.0",
+  "version": "1.2.0-alpha.1",
   "description": "Manage a pi-hole installation",
   "author": {
     "name": "oweitman",
@@ -24,7 +24,7 @@
     "url": "https://github.com/oweitman/ioBroker.pi-hole2.git"
   },
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2",
