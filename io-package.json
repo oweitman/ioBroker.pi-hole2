@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.2.0-alpha.1",
+    "version": "1.2.0-alpha.2",
     "news": {
+      "1.2.0-alpha.2": {
+        "en": "fix test and release",
+        "de": "fixtest und release",
+        "ru": "испытание и освобождение",
+        "pt": "corrigir teste e liberação",
+        "nl": "vastleggen van test en loslaten",
+        "fr": "fixer l'essai et la libération",
+        "it": "test di correzione e rilascio",
+        "es": "prueba de reparación y liberación",
+        "pl": "naprawić badanie i zwolnić",
+        "uk": "фіксувати тест і реліз",
+        "zh-cn": "固定测试和释放"
+      },
       "1.2.0-alpha.1": {
         "en": "fix errors",
         "de": "fehler beheben",
@@ -80,19 +93,6 @@
         "pl": "- set odrzut Nieautoryzowane do fałszywego\n- usunąć kilka podwójnych bloków jsdoc\n- stałe komentarze z przeglądu adaptera\n\nusunąć zdarzenie rozładowania, utworzyć punkt danych \"Dane\", dostosować role stanu, sprawdzić i ograniczyć parametry wejściowe odświeżania, naprawić role",
         "uk": "- відхилити відхилення Несанкціонований\n- видалити деякі блоки подвійного jsdoc\n- виправлені коментарі з огляду адаптера\n\nвидалення вивантажувального заходу, створення точки даних \"Дата\", регулювання ролі держави, перевірки та обмеження параметрів вводу, фіксації ролей",
         "zh-cn": "- 设定拒绝 未经批准伪造\n- 移除一些双jsdoc块\n- 适配器审查的固定评论\n\n删除卸载事件, 创建“ 数据” 数据点, 调整状态角色, 检查和限制刷新输入参数, 固定角色"
-      },
-      "0.4.1": {
-        "en": "fix repochecker issues\nupdate packages\nremove history datapoint\nadd jsdoc\nfix Blockingtime enabling\nfix datapoint coloring",
-        "de": "repochecker probleme beheben\nupdate-pakete\ngeschichte datapoint entfernen\njsdoc hinzufügen\nblockierzeit aktivieren\nfix datapoint färbung",
-        "ru": "исправить проблемы с репочекером\nобновление пакетов\nудалить history datapoint\nдобавить jsdoc\nустранение блокировки, позволяющей\nфиксировать цвет точки данных",
-        "pt": "corrigir problemas com o repochecker\natualizar pacotes\nremover o ponto de dados do histórico\nadicionar jsdoc\nactivar o tempo de bloqueio\ncorrigir a coloração do ponto de dados",
-        "nl": "repochecker problemen oplossen\npakketten bijwerken\ngeschiedenisdatapunt verwijderen\njsdoc toevoegen\nfix Blokkeren tijd inschakelen\nfix datapoint kleuring",
-        "fr": "résoudre les problèmes de repochecker\nmettre à jour les paquets\nsupprimer le point de données d'historique\najouter jsdoc\ncorrection de l'activation du temps de blocage\nfixer la coloration des points de données",
-        "it": "risolvere problemi di repochecker\npacchetti di aggiornamento\nrimuovere datapoint cronologia\naggiungi jsdoc\ncorrezione del tempo di blocco\ncorrezione della colorazione datapoint",
-        "es": "solucionar problemas de repochecker\nactualizar paquetes\neliminar datos de historia\nañadir jsdoc\najuste de tiempo de bloqueo\nfijar punto de datos para colorear",
-        "pl": "naprawianie problemów repochecker\naktualizacja pakietów\nusuń punkt danych historii\ndodaj jsdoc\nnaprawić Blockingtime włączający\nnaprawić kolorowanie datapoint",
-        "uk": "виправити проблеми репочекера\nоновлення пакетів\nвидалити точку даних історії\nдодати jsdoc\nфіксувати блокування часу\nфіксувати фарбування точок даних",
-        "zh-cn": "修复再检查器问题\n更新软件包\n删除历史数据点\n添加jsdoc语\n设置屏蔽时间启用\n固定数据点颜色"
       }
     },
     "titleLang": {
