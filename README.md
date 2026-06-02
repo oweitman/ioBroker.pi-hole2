@@ -198,6 +198,7 @@ You have restarted the adapter too often and each time a new session is requeste
 ### **WORK IN PROGRESS**
 
 - add test and coverage
+- improve and harden error handling
 
 ### 1.1.1 (2025-07-25)
 
