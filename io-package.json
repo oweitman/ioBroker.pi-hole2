@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.1.1",
+    "version": "1.2.0-alpha.0",
     "news": {
+      "1.2.0-alpha.0": {
+        "en": "add test and coverage\nimprove and harden error handling",
+        "de": "test und deckung hinzufügen\nfehlerbehandlung verbessern und aushärten",
+        "ru": "добавить тест и охват\nулучшение и упрочение обработки ошибок",
+        "pt": "adicionar teste e cobertura\nmelhorar e endurecer o tratamento de erros",
+        "nl": "test en dekking toevoegen\nverbeteren en verharden foutafhandeling",
+        "fr": "ajouter test et couverture\naméliorer et durcir la gestion des erreurs",
+        "it": "aggiungere test e copertura\nmigliorare e indurire la gestione degli errori",
+        "es": "añadir test y cobertura\nmejorar y endurecer el manejo de errores",
+        "pl": "dodać badanie i pokrycie\nulepszenie i zatwardzenie obsługi błędów",
+        "uk": "додати тест і покриття\nполіпшення та затвердити обробку помилок",
+        "zh-cn": "增加测试和覆盖范围\n改进和硬化错误处理"
+      },
       "1.1.1": {
         "en": "fix translation",
         "de": "bersetzung",
@@ -80,19 +93,6 @@
         "pl": "Wykonaj ekstrakcję wartości szczegółowych dla wersji / podsumowania dezaktywowane",
         "uk": "Зробіть вилучення докладних значень для версії/сумаційного деактивату",
         "zh-cn": "使取出版本/摘要去功能化的详细值"
-      },
-      "0.3.0": {
-        "en": "add translation files\nrework refresh logic aligned with pihole\nencrypt password\nadd detailed datapoints for Summary and Version for selected data",
-        "de": "übersetzungsdateien hinzufügen\nrefresh-logik mit pihole\npasswort verschlüsseln\ndetaillierte Datenpunkte für Zusammenfassung und Version für ausgewählte Daten hinzufügen",
-        "ru": "добавить файлы перевода\nпереработка логики обновления, выровненной с отверстием\nшифровать пароль\nдобавить подробные точки данных для резюме и версии для выбранных данных",
-        "pt": "adicionar arquivos de tradução\nrefazer a lógica de atualização alinhada com pihole\ncriptografar senha\nadicionar pontos de dados detalhados para Resumo e Versão para dados selecionados",
-        "nl": "vertaalbestanden toevoegen\nrework refresh logica uitgelijnd met pihole\nwachtwoord versleutelen\ngedetailleerde datapunten voor samenvatting en versie toevoegen voor geselecteerde gegevens",
-        "fr": "ajouter des fichiers de traduction\nretravailler la logique de rafraîchissement alignée sur le trou\nchiffrer le mot de passe\najouter des points de données détaillés pour le résumé et la version pour certaines données",
-        "it": "aggiungere i file di traduzione\nrielaborare la logica rinfrescante allineata con foro\ncrittografia password\naggiungere i datapoint dettagliati per Riepilogo e Versione per i dati selezionati",
-        "es": "añadir archivos de traducción\nrework fresco lógica alineado con el agujero\ncontraseña de cifrado\nañadir datos detallados para Resumen y Versión para datos seleccionados",
-        "pl": "dodawanie plików tłumaczeniowych\nodświeżanie logiki dopasowane do otworu\nszyfrowanie hasła\ndodaj szczegółowe punkty danych dla podsumowania i wersji dla wybranych danych",
-        "uk": "додати файли перекладу\nвідновлення логіки, що вирівнюється з фіксатором\nзашифрувати пароль\nдодати докладні точки даних для Резюме та Версія для вибраних даних",
-        "zh-cn": "添加翻译文件\n根据 pihole 重修刷新逻辑\n加密密码\n为选定数据的概要和版本添加详细数据点"
       }
     },
     "titleLang": {
