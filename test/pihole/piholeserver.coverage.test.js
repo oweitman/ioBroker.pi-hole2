@@ -1,95 +1,138 @@
 /* eslint-disable no-unused-expressions */
+'use strict';
+
 const { expect } = require('chai');
 const sinon = require('sinon');
-const ServerMod = require('../../lib/piholeserver.js');
+const PiholeServer = require('../../lib/piholeserver.js');
 
-function isClass(fn) { return typeof fn === 'function' && /^\s*class[\s{]/.test(fn.toString()); }
+function makeAdapter() {
+    return {
+        namespace: 'pi-hole2.0',
+        config: {
+            password: 'x',
+            address: 'http://pi',
+            refreshSummary: 1,
+            refreshBlocking: 1,
+            refreshSystem: 1,
+            refreshTop: 1,
+            refreshVersion: 1,
+            enabledetailedversion: false,
+            enabledetailedsummary: false,
+        },
+        log: {
+            debug: sinon.spy(),
+            silly: sinon.spy(),
+            info: sinon.spy(),
+            warn: sinon.spy(),
+            error: sinon.spy(),
+        },
+        subscribeStates: sinon.spy(),
+        sendTo: sinon.spy(),
+    };
+}
 
-describe('piholeserver – delegation & state', function () {
-    let inst, fake;
+function makeIoUtil() {
+    return {
+        logdebug: sinon.spy(),
+        logsilly: sinon.spy(),
+        checkNumberRange: sinon.stub().callsFake((v, min, max, def) => {
+            const n = Number(v);
+            if (!Number.isFinite(n)) return def;
+            return Math.max(min, Math.min(max, n));
+        }),
+        createFolderNotExistsAsync: sinon.stub().resolves(),
+        createObjectNotExistsAsync: sinon.stub().resolves(),
+        extendObjectAsync: sinon.stub().resolves(),
+        getStateAsync: sinon.stub().resolves({ val: null }),
+        setStateAsync: sinon.stub().resolves(),
+        delay: sinon.stub().resolves(),
+    };
+}
 
-    function construct() {
-        const opts = { baseUrl: 'http://127.0.0.1:8080', password: 'secret', timeoutMs: 200 };
-        const tries = [() => new ServerMod(opts), () => new ServerMod('http://127.0.0.1:8080', 'secret'), () => new ServerMod()];
-        let lastErr;
-        for (const t of tries) { try { return t(); } catch (e) { lastErr = e; } }
-        throw new Error(`cannot construct: ${lastErr && lastErr.message}`);
-    }
+function initMinimalFields(server) {
+    server.stateTemplate = {
+        Summary: { name: 'Summary' },
+        Blocking: { name: 'Blocking' },
+    };
 
-    function inject(inst, fake) {
-        // Versuche typische Felder zu ersetzen
-        for (const k of ['client', 'api', 'apiClient', '_client', '_api', '_apiClient']) {
-            try { inst[k] = fake; } catch (_) { }
-        }
-        // Fallback: Methoden suchen & ersetzen
-        for (const v of Object.values(inst)) {
-            if (v && typeof v === 'object') {
-                ['getVersion', 'getSummary', 'enableBlocking', 'disableBlocking'].forEach(m => {
-                    if (typeof v[m] === 'function') v[m] = fake[m];
-                });
-            }
-        }
-    }
+    server.stateTemplateDetailedVersion = {
+        CoreLocal: { name: 'CoreLocal' },
+    };
 
-    beforeEach(function () {
-        if (!isClass(ServerMod)) this.skip();
-        inst = construct();
-        fake = {
-            getVersion: sinon.stub().resolves({ ok: true }),
-            getSummary: sinon.stub().resolves({ queries: { total: 1 }, clients: { total: 2 } }),
-            enableBlocking: sinon.stub().resolves({ ok: true }),
-            disableBlocking: sinon.stub().resolves({ ok: true }),
-        };
-        inject(inst, fake);
+    server.stateTemplateDetailedSummary = {
+        QueriesTotal: { name: 'QueriesTotal' },
+    };
+
+    server.detailedDatapointsPath = 'Data';
+    server.detailedDatapointsVersionPath = 'Version';
+    server.detailedDatapointsSummaryPath = 'Summary';
+    server.colorDisabled = '#ff0000';
+    server.colorEnabled = '#00C853';
+    server.data = [];
+}
+
+describe('piholeserver coverage helpers', () => {
+    let server;
+    let adapter;
+
+    beforeEach(() => {
+        adapter = makeAdapter();
+        server = new PiholeServer(adapter);
+        server.ioUtil = /** @type {any} */ (makeIoUtil());
+        server.pihole = /** @type {any} */ ({
+            checkOnline: sinon.stub().resolves(false),
+            getSummary: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            getSystem: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            getBlocking: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            getVersion: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            getTopClients: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            getTopDomains: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            setBlocking: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+            getGeneralPiholeAPI: sinon.stub().resolves({ ok: false, error: 'OFFLINE', body: null, response: null }),
+        });
+
+        initMinimalFields(server);
     });
 
-    afterEach(function () { sinon.restore(); });
-
-    it('getVersion delegates', async function () {
-        if (typeof inst.getVersion !== 'function') this.skip();
-        const res = await inst.getVersion();
-        expect(fake.getVersion.calledOnce).to.be.true;
-        expect(res).to.be.an('object');
+    afterEach(() => {
+        sinon.restore();
     });
 
-    it('getSummary delegates & error path', async function () {
-        if (typeof inst.getSummary !== 'function') this.skip();
-        await inst.getSummary();
-        fake.getSummary.resetHistory();
-        fake.getSummary.rejects(new Error('Boom'));
-        await expect(inst.getSummary()).to.be.rejectedWith(/Boom/);
+    it('handles missing pihole client without throwing', async () => {
+        server.pihole = null;
+
+        await server.getDataSummary();
+        await server.getDataSystem();
+        await server.getDataBlocking();
+        await server.getDataVersion();
+        await server.getDataTop();
+        await server.doToggleBlocking();
+
+        expect(true).to.equal(true);
     });
 
-    it('blocking on/off delegates (incl. time)', async function () {
-        const hasSet = typeof inst.setBlocking === 'function';
-        const hasEnable = typeof inst.enableBlocking === 'function';
-        const hasDisable = typeof inst.disableBlocking === 'function';
+    it('handles failed getData methods without throwing', async () => {
+        await server.getDataSummary();
+        await server.getDataSystem();
+        await server.getDataBlocking();
+        await server.getDataVersion();
+        await server.getDataTop();
 
-        if (!hasSet && !hasEnable && !hasDisable) {
-            this.skip(); // keine Blocking-API vorhanden -> sauber überspringen
-        }
+        expect(adapter.log.warn.callCount).to.be.greaterThan(0);
+    });
 
-        const fake = {
-            enableBlocking: sinon.stub().resolves({ ok: true }),
-            disableBlocking: sinon.stub().resolves({ ok: true }),
-        };
-        // falls du oben schon ein fake injizierst, hier ggf. entfernen;
-        // ansonsten injiziere:
-        for (const k of ['client', 'api', 'apiClient', '_client', '_api', '_apiClient']) {
-            try { inst[k] = { ...inst[k], ...fake }; } catch (_) { }
-        }
+    it('handles invalid message payload without throwing', async () => {
+        await server.piHoleApi({ message: null });
+        await server.piHoleApi({ message: 'invalid' });
 
-        if (hasSet) {
-            await inst.setBlocking(true);
-            await inst.setBlocking(false, 30);
-        } else {
-            if (hasEnable) await inst.enableBlocking();
-            if (hasDisable) await inst.disableBlocking(30);
-        }
+        sinon.assert.notCalled(server.pihole.getGeneralPiholeAPI);
+    });
 
-        const called =
-            (fake.enableBlocking && fake.enableBlocking.called) ||
-            (fake.disableBlocking && fake.disableBlocking.called);
-        expect(Boolean(called)).to.be.true;
+    it('handles stateChange with missing input without throwing', async () => {
+        await server.stateChange(null, null);
+        await server.stateChange('adapter.0.Blocking', null);
+        await server.stateChange('adapter.0.Blocking', { ack: true });
+
+        sinon.assert.notCalled(server.pihole.getBlocking);
     });
 });

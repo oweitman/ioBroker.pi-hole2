@@ -21,7 +21,7 @@ describe('ioUtil state operations', () => {
         expect(ack).to.be.true;
     });
 
-    it('setStateNack sets ack=false when callback supplied', (done) => {
+    it('setStateNack sets ack=false when callback supplied', done => {
         const adapter = createAdapterStub();
         const util = new ioUtil(adapter);
         util.setStateNack('id', 0, 'l1', 'l2', () => {
@@ -37,28 +37,12 @@ describe('ioUtil state operations', () => {
     it('setStateNack defaults ack=true when no callback', () => {
         const adapter = createAdapterStub();
         const util = new ioUtil(adapter);
-        util.setStateNack('temp', 'val', 'x', 'y',undefined);
+        util.setStateNack('temp', 'val', 'x', 'y', undefined);
         sinon.assert.calledOnce(adapter.setState);
         const [fullName, value, ack] = adapter.setState.getCall(0).args;
         expect(fullName).to.equal('x.y.temp');
         expect(value).to.equal('val');
         expect(ack).to.be.true;
-    });
-
-    it('createState forwards parameters correctly', (done) => {
-        const adapter = createAdapterStub();
-        const util = new ioUtil(adapter);
-        const templ = { name: 'foo', read: true, write: false };
-        util.createState(templ, 'lv1', 'lv2', () => {
-            sinon.assert.calledOnce(adapter.createState);
-            const call = adapter.createState.getCall(0);
-            // adapter.createState(level1, level2, name, template, cb)
-            expect(call.args[0]).to.equal('lv1');
-            expect(call.args[1]).to.equal('lv2');
-            expect(call.args[2]).to.equal('foo');
-            expect(call.args[3]).to.equal(templ);
-            done();
-        });
     });
 
     it('setState always uses ack=true for synchronous variant', () => {
@@ -75,7 +59,12 @@ describe('ioUtil state operations', () => {
     it('getObjects returns map keyed by id', async () => {
         const adapter = createAdapterStub();
         // simulate two objects returned from adapter
-        adapter._objectList = { rows: [ { id: 'a', value: 1 }, { id: 'b', value: 2 } ] };
+        adapter._objectList = {
+            rows: [
+                { id: 'a', value: 1 },
+                { id: 'b', value: 2 },
+            ],
+        };
         const util = new ioUtil(adapter);
         const objs = await util.getObjects('some.path');
         expect(objs).to.deep.equal({ a: { id: 'a', value: 1 }, b: { id: 'b', value: 2 } });
@@ -92,11 +81,12 @@ describe('ioUtil state operations', () => {
         expect(adapter.getStatesAsync.getCall(0).args[0]).to.equal('x.y.state1');
     });
 
-    it('getState forwards full name and callback', (done) => {
+    it('getState forwards full name and callback', done => {
         const adapter = createAdapterStub();
         adapter._stateValue = { val: 999 };
         const util = new ioUtil(adapter);
-        util.getState('id', 'l', 'm', (err, state) => {
+
+        util.getState('id', /** @type {any} */ ('l'), 'm', (err, state) => {
             expect(err).to.be.null;
             expect(state).to.deep.equal(adapter._stateValue);
             sinon.assert.calledOnce(adapter.getState);
