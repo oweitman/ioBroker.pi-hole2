@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.2.0-alpha.3",
+    "version": "1.2.0-alpha.4",
     "news": {
+      "1.2.0-alpha.4": {
+        "en": "add updated coverage tests\nfix type checking\nfix authorization",
+        "de": "hinzufügen von aktualisierten coverage-tests\nfix-typprüfung\nfixgenehmigung",
+        "ru": "добавить обновленные тесты покрытия\nпроверка типа фиксации\nфиксировать разрешение",
+        "pt": "adicionar testes de cobertura atualizados\nverificação do tipo de correção\ncorrigir a autorização",
+        "nl": "bijgewerkte dekkingstests toevoegen\nfix type controle\nfix autorisatie",
+        "fr": "ajouter des tests de couverture actualisés\ncorrection de la vérification du type\nfixer l'autorisation",
+        "it": "aggiungere test di copertura aggiornati\ncontrollo del tipo di correzione\ncorrezione dell'autorizzazione",
+        "es": "añadir pruebas de cobertura actualizadas\ntipo de comprobación\nfijar autorización",
+        "pl": "dodać zaktualizowane testy pokrycia\nkontrola typu fix\nustalić autoryzację",
+        "uk": "додати оновлені тести покриття\nперевірка типу фіксації\nвиправлення авторизації",
+        "zh-cn": "添加最新的覆盖测试\n校正类型检查\n固定授权"
+      },
       "1.2.0-alpha.3": {
         "en": "fix test and release",
         "de": "fixtest und release",
@@ -80,19 +93,6 @@
         "pl": "dodaj wskaźniki aktualizacji dla różnych elementów przegród w punktach danych Dane / Wersje",
         "uk": "додавати індикатори оновлення для різних компонентів потоку у точках даних даних даних даних даних / даних",
         "zh-cn": "在 Data/Version 数据点中添加不同 pihole 组件的更新指标"
-      },
-      "1.0.0": {
-        "en": "If the adapter was already installed, please remove all existing data points of the adapter and restart the adapter.\nfirst beta channel release",
-        "de": "Wenn der Adapter bereits installiert ist, entfernen Sie bitte alle vorhandenen Datenpunkte des Adapters und starten Sie den Adapter neu.\nerste beta-kanal-release",
-        "ru": "Если адаптер уже установлен, пожалуйста, удалите все существующие точки данных адаптера и перезапустите адаптер.\nпервый бета-канал",
-        "pt": "Se o adaptador já estiver instalado, remova todos os pontos de dados existentes do adaptador e reinicie o adaptador.\nprimeira versão do canal beta",
-        "nl": "Als de adapter al is geïnstalleerd, verwijder dan alle bestaande datapunten van de adapter en herstart de adapter.\neerste beta kanaal release",
-        "fr": "Si l'adaptateur a déjà été installé, veuillez supprimer tous les points de données existants de l'adaptateur et redémarrer l'adaptateur.\npremière libération du canal bêta",
-        "it": "Se l'adattatore è stato già installato, si prega di rimuovere tutti i punti di dati esistenti dell'adattatore e riavviare l'adattatore.\nprimo beta canale rilascio",
-        "es": "Si el adaptador ya estaba instalado, por favor, retire todos los puntos de datos existentes del adaptador y reinicie el adaptador.\nprimer canal beta",
-        "pl": "Jeśli adapter został już zainstalowany, należy usunąć wszystkie istniejące punkty danych adaptera i ponownie uruchomić adapter.\npierwsze wydanie kanału beta",
-        "uk": "Якщо адаптер вже був встановлений, будь ласка, видаліть всі наявні точки даних адаптера і перезавантажте адаптер.\nперший бета канал реліз",
-        "zh-cn": "如果适配器已经安装,请移除适配器的所有现有数据点并重新启动适配器.\n第一个β频道发布"
       }
     },
     "titleLang": {
