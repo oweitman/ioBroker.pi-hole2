@@ -194,14 +194,8 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 1.2.0 (2026-06-10)
 
-### **WORK IN PROGRESS**
-
-- add updated coverage tests
-- fix repochecker
-- fix type checking
-- fix authorization
-- fix test and release
 - fix errors
 - add test and coverage
 - improve and harden error handling
