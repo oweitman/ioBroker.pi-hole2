@@ -42,6 +42,17 @@
             "lg": 4,
             "xl": 4
         },
+        "enableClientDomainStats": {
+            "type": "checkbox",
+            "label": "enable client domain statistics",
+            "newLine": true,
+            "default": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
         "refreshSummary": {
             "type": "number",
             "label": "refresh Summary (seconds)",
@@ -101,6 +112,32 @@
             "min": 1,
             "max": 86400,
             "default": 120,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "refreshClientDomainStats": {
+            "type": "number",
+            "label": "refresh client domain statistics (seconds)",
+            "newLine": true,
+            "min": 60,
+            "max": 86400,
+            "default": 3600,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "clientQuerySpread": {
+            "type": "number",
+            "label": "spread client queries over refresh interval (percent)",
+            "newLine": true,
+            "min": 0,
+            "max": 90,
+            "default": 10,
             "xs": 12,
             "sm": 12,
             "md": 6,

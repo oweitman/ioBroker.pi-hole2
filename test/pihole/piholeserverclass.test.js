@@ -84,6 +84,7 @@ function makeIoUtil() {
         getStateAsync: sinon.stub().resolves({ val: null }),
         setStateAsync: sinon.stub().resolves(),
         delay: sinon.stub().resolves(),
+        setMyTimeout: sinon.stub().callsFake((id, callback, timeout) => setTimeout(callback, timeout)),
     };
 }
 

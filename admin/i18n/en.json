@@ -7,5 +7,8 @@
   "refresh Blocking (seconds)": "refresh Blocking (seconds)",
   "refresh System (seconds)": "refresh System (seconds)",
   "refresh Top (seconds)": "refresh Top (seconds)",
-  "refresh Version (seconds)": "refresh Version (seconds)"
+  "refresh Version (seconds)": "refresh Version (seconds)",
+  "enable client domain statistics": "Enable per-client domain statistics",
+  "refresh client domain statistics (seconds)": "Refresh client domain statistics (seconds)",
+  "spread client queries over refresh interval (percent)": "Spread client queries over refresh interval (percent)"
 }

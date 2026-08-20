@@ -7,5 +7,8 @@
     "refresh Top (seconds)": "Top erfrischen (Sekunden)",
     "refresh Version (seconds)": "Version aktualisieren (Sekunden)",
     "enabledetailedsummary": "Detaillierte Datenzusammenfassung",
-    "enabledetailedversion": "Detaillierte Datenversion"
+    "enabledetailedversion": "Detaillierte Datenversion",
+    "enable client domain statistics": "Domainstatistik je Client aktivieren",
+    "refresh client domain statistics (seconds)": "Client-Domainstatistik aktualisieren (Sekunden)",
+    "spread client queries over refresh interval (percent)": "Client-Abfragen über das Aktualisierungsintervall verteilen (Prozent)"
 }

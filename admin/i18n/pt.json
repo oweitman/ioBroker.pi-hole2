@@ -8,4 +8,7 @@
     "refresh Version (seconds)": "Versão de atualização (segundos)",
     "enabledetailedsummary": "Resumo dos dados detalhados",
     "enabledetailedversion": "Versão de dados detalhados"
+  ,"enable client domain statistics": "Ativar estatísticas de domínio por cliente",
+  "refresh client domain statistics (seconds)": "Atualizar estatísticas de domínio do cliente (segundos)",
+  "spread client queries over refresh interval (percent)": "Distribuir consultas de clientes pelo intervalo (percentagem)"
 }

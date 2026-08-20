@@ -14,7 +14,7 @@ describe('ioUtil timers and observer management', () => {
         // Restore any stubs created in tests to avoid interference across tests
         sinon.restore();
     });
-    it('setTimeout schedules timer and replaces existing one', () => {
+    it('setMyTimeout schedules timer and replaces existing one', () => {
         const adapter = createAdapterStub();
         // Replace the fake with a stub so that we can specify return values
         const setTimeoutStub = sinon.stub(adapter, 'setTimeout');
@@ -25,11 +25,11 @@ describe('ioUtil timers and observer management', () => {
         const util = new ioUtil(adapter);
         const cb = sinon.spy();
         // schedule first timer
-        util.setTimeout('job', cb, 100);
+        util.setMyTimeout('job', cb, 100);
         expect(util.observers['job']).to.equal(token1);
         sinon.assert.calledOnce(setTimeoutStub);
         // schedule again with same id should clear first
-        util.setTimeout('job', cb, 50);
+        util.setMyTimeout('job', cb, 50);
         // clearTimeout should be called for old token
         sinon.assert.calledOnce(adapter.clearTimeout);
         expect(adapter.clearTimeout.getCall(0).args[0]).to.equal(token1);
@@ -37,13 +37,13 @@ describe('ioUtil timers and observer management', () => {
         sinon.assert.calledTwice(setTimeoutStub);
     });
 
-    it('setTimeout does nothing when doClose is true', () => {
+    it('setMyTimeout does nothing when doClose is true', () => {
         const adapter = createAdapterStub();
         // stub to detect calls
         const setTimeoutStub = sinon.stub(adapter, 'setTimeout');
         const util = new ioUtil(adapter);
         util.doClose = true;
-        util.setTimeout('id', () => {}, 10);
+        util.setMyTimeout('id', () => {}, 10);
         sinon.assert.notCalled(setTimeoutStub);
         // observers map should not have the id entry
         expect(util.observers).to.not.have.property('id');
@@ -55,7 +55,7 @@ describe('ioUtil timers and observer management', () => {
         const token1 = { fn: null, time: null, arg1: null, arg2: null, id: 'tok' };
         const setTimeoutStub = sinon.stub(adapter, 'setTimeout').returns(token1);
         const util = new ioUtil(adapter);
-        util.setTimeout('abc', () => {}, 0);        const token2 = { fn: null, time: null, arg1: null, arg2: null, id: 'tok' };
+        util.setMyTimeout('abc', () => {}, 0);
         expect(util.observers['abc']).to.equal(token1);
         util.clearTimeout('abc');
         sinon.assert.calledOnce(adapter.clearTimeout);
@@ -68,7 +68,7 @@ describe('ioUtil timers and observer management', () => {
         const token1 = { fn: null, time: null, arg1: null, arg2: null, id: 'tokInt' };
         const setTimeoutStub = sinon.stub(adapter, 'setTimeout').returns(token1);
         const util = new ioUtil(adapter);
-        util.setTimeout('interval', () => {}, 0);
+        util.setMyTimeout('interval', () => {}, 0);
         util.clearInterval('interval');
         sinon.assert.calledOnce(adapter.clearInterval);
         expect(adapter.clearInterval.getCall(0).args[0]).to.equal(token1);
@@ -84,8 +84,8 @@ describe('ioUtil timers and observer management', () => {
         setTimeoutStub.onFirstCall().returns(token1);
         setTimeoutStub.onSecondCall().returns(token2);
         const util = new ioUtil(adapter);
-        util.setTimeout('a', () => {}, 0);
-        util.setTimeout('b', () => {}, 0);
+        util.setMyTimeout('a', () => {}, 0);
+        util.setMyTimeout('b', () => {}, 0);
         util.deleteObservers();
         // clearTimeout should be invoked for both tokens
         sinon.assert.calledTwice(adapter.clearTimeout);
@@ -97,13 +97,13 @@ describe('ioUtil timers and observer management', () => {
         const token1 = { fn: null, time: null, arg1: null, arg2: null, id: 'tok' };
         const setTimeoutStub = sinon.stub(adapter, 'setTimeout').returns(token1);
         const util = new ioUtil(adapter);
-        util.setTimeout('c', () => {}, 5);
+        util.setMyTimeout('c', () => {}, 5);
         util.closeConnections();
         // clearing existing
         sinon.assert.calledOnce(adapter.clearTimeout);
         expect(util.doClose).to.be.true;
         // new schedule should be ignored
-        util.setTimeout('new', () => {}, 10);
+        util.setMyTimeout('new', () => {}, 10);
         sinon.assert.calledOnce(setTimeoutStub);
         expect(util.observers).to.not.have.property('new');
     });

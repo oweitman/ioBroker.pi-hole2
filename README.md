@@ -50,6 +50,27 @@ Some data from Version is extracted into data points in Data.Version.
 This can be enabled/disabled in the configuration.
 The data points are highlighted green/red when the feature is enabled/disabled.
 
+### Current-day domains per client
+
+The optional per-client domain statistics read the Pi-hole query log for the current local calendar day. By default,
+they are refreshed once per hour. Client requests are distributed over 10 percent of this refresh interval to reduce
+load on Pi-hole. The percentage is configurable from 0 to 90. The adapter calculates the individual pause from the
+current number of clients, so the sum of all pauses can never exceed the refresh interval.
+
+For every named Pi-hole client, the adapter creates two JSON states:
+
+```text
+pi-hole2.0.Clients.<clientName>.permitted
+pi-hole2.0.Clients.<clientName>.blocked
+```
+
+Each value is a JSON array such as `[{"domain":"example.org","count":12}]`. A domain occurs only once in each
+array, and entries are sorted by descending count. Characters not safe in an ioBroker object ID (including `.` and
+`#`) are replaced with `_`. If two client names result in the same ID, a numeric suffix keeps their states separate.
+
+Pi-hole privacy levels and the Pi-hole `excludeClients`/`excludeDomains` settings also apply to this data. The adapter
+only reads the query log; it does not modify allowlists or denylists.
+
 ### General SendTo Function
 
 The sendTo function is used to send commands to the pi-hole device.
@@ -194,6 +215,12 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- Added configurable per-client daily domain statistics for permitted and blocked queries, including safe request distribution and JSON datapoints
+  sorted by query count.
+
 ### 1.2.0 (2026-06-10)
 
 - fix errors

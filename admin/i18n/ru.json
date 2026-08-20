@@ -8,4 +8,7 @@
     "refresh Version (seconds)": "обновить версию (секунды)",
     "enabledetailedsummary": "Подробное резюме данных",
     "enabledetailedversion": "Подробная версия данных"
+  ,"enable client domain statistics": "Включить статистику доменов по клиентам",
+  "refresh client domain statistics (seconds)": "Обновлять статистику доменов клиентов (секунды)",
+  "spread client queries over refresh interval (percent)": "Распределить запросы клиентов по интервалу (проценты)"
 }

@@ -261,6 +261,25 @@ describe('piholeApiClient (unit, no network)', function () {
         });
     });
 
+    describe('query log helpers', function () {
+        it('requests query suggestions', async function () {
+            const stub = sinon.stub(client, 'callAuthenticated').resolves({ ok: true });
+
+            await client.getQuerySuggestions();
+
+            sinon.assert.calledOnceWithExactly(stub, 'GET', '/queries/suggestions');
+        });
+
+        it('passes query filters to /queries', async function () {
+            const stub = sinon.stub(client, 'callAuthenticated').resolves({ ok: true });
+            const query = { from: 1, until: 2, client_name: 'phone.lan', length: 1000 };
+
+            await client.getQueries(query);
+
+            sinon.assert.calledOnceWithExactly(stub, 'GET', '/queries', null, query);
+        });
+    });
+
     describe('public API methods', function () {
         beforeEach(function () {
             sinon.stub(client, 'callAuthenticated').resolves({

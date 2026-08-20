@@ -8,4 +8,7 @@
     "refresh Version (seconds)": "刷新版本（秒）",
     "enabledetailedsummary": "详细的数据摘要",
     "enabledetailedversion": "详细的数据版本"
+  ,"enable client domain statistics": "启用每个客户端的域名统计",
+  "refresh client domain statistics (seconds)": "刷新客户端域名统计（秒）",
+  "spread client queries over refresh interval (percent)": "在刷新间隔内分散客户端查询（百分比）"
 }

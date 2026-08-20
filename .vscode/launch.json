@@ -14,6 +14,15 @@
             "console": "internalConsole",
             "outputCapture": "std",
             "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
+        },
+        {
+            "name": "repochecker local",
+            "program": "../iobroker.repochecker/index.js",
+            "args": ["https://github.com/oweitman/ioBroker.pi-hole2", "--local"],
+            "request": "launch",
+            "stopOnEntry": false,
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
         }
     ]
 }

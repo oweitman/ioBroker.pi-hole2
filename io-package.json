@@ -123,7 +123,10 @@
     "refreshBlocking": "10",
     "refreshSystem": "20",
     "refreshTop": "60",
-    "refreshVersion": "120"
+    "refreshVersion": "120",
+    "enableClientDomainStats": true,
+    "refreshClientDomainStats": 3600,
+    "clientQuerySpread": 10
   },
   "objects": [],
   "instanceObjects": [

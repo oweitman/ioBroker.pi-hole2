@@ -8,4 +8,7 @@
     "refresh Version (seconds)": "Vernieuw versie (seconden)",
     "enabledetailedsummary": "Gedetailleerde gegevensoverzicht",
     "enabledetailedversion": "Gedetailleerde gegevensversie"
+  ,"enable client domain statistics": "Domeinstatistieken per client inschakelen",
+  "refresh client domain statistics (seconds)": "Domeinstatistieken vernieuwen (seconden)",
+  "spread client queries over refresh interval (percent)": "Clientaanvragen over het interval spreiden (percentage)"
 }

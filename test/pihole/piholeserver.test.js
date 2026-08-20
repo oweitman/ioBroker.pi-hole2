@@ -4,6 +4,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const PiholeServer = require('../../lib/piholeserver.js');
+const PiholeClient = require('../../lib/piholeApiClient.js');
 
 function makeAdapter() {
     return {
@@ -69,6 +70,7 @@ describe('piholeserver module', () => {
             'doDataSystem',
             'doDataTop',
             'doDataVersion',
+            'doClientDomainStats',
             'checkConnection',
             'getDataSummary',
             'getDataSystem',
@@ -77,8 +79,90 @@ describe('piholeserver module', () => {
             'getDataTop',
             'analyzeVersion',
             'analyzeSummary',
+            'getClientDomainStats',
+            'getClientQueriesForDay',
+            'updateClientDomainStates',
+            'sanitizeClientName',
+            'isBlockedQueryStatus',
+            'aggregateClientDomains',
+            'calculateClientQueryDelay',
         ].forEach(method => {
             expect(server[method], method).to.be.a('function');
+        });
+    });
+
+    it('sanitizes client names for one ioBroker ID segment', () => {
+        const server = new PiholeServer(makeAdapter());
+
+        expect(server.sanitizeClientName('phone.home#1')).to.equal('phone_home_1');
+        expect(server.sanitizeClientName('  #.#  ')).to.equal('unknown');
+    });
+
+    it('aggregates unique domains by blocking status and sorts by count', () => {
+        const server = new PiholeServer(makeAdapter());
+        const queries = [
+            { domain: 'b.example', status: 'FORWARDED' },
+            { domain: 'a.example', status: 'CACHE' },
+            { domain: 'b.example', status: 'CACHE' },
+            { domain: 'ads.example', status: 'GRAVITY' },
+            { domain: 'ads.example', status: 'CNAME_REGEX' },
+            { domain: 'other.example', status: 'DENYLIST' },
+        ];
+
+        expect(server.aggregateClientDomains(queries, false)).to.deep.equal([
+            { domain: 'b.example', count: 2 },
+            { domain: 'a.example', count: 1 },
+        ]);
+        expect(server.aggregateClientDomains(queries, true)).to.deep.equal([
+            { domain: 'ads.example', count: 2 },
+            { domain: 'other.example', count: 1 },
+        ]);
+    });
+
+    it('limits the total client delay to the configured refresh percentage', () => {
+        const server = new PiholeServer(makeAdapter());
+        server.refreshClientDomainStats = 3600;
+        server.clientQuerySpread = 10;
+
+        expect(server.calculateClientQueryDelay(1)).to.equal(0);
+        expect(server.calculateClientQueryDelay(11)).to.equal(36000);
+        expect(server.calculateClientQueryDelay(101) * 100).to.equal(360000);
+    });
+
+    it('paginates all current-day queries for one client', async () => {
+        const server = new PiholeServer(makeAdapter());
+        server.clientQueryPageSize = 2;
+        const getQueriesStub = sinon.stub();
+        const pihole = Object.create(PiholeClient.prototype);
+        pihole.getQueries = getQueriesStub;
+        server.pihole = pihole;
+        getQueriesStub.onFirstCall().resolves({
+            ok: true,
+            body: { queries: [{ domain: 'one' }, { domain: 'two' }], cursor: 20 },
+        });
+        getQueriesStub.onSecondCall().resolves({
+            ok: true,
+            body: { queries: [{ domain: 'three' }], cursor: 10 },
+        });
+
+        const result = await server.getClientQueriesForDay('phone.lan', 100, 200);
+
+        if (!result) {
+            throw new Error('Expected query results');
+        }
+        expect(result.map(query => query.domain)).to.deep.equal(['one', 'two', 'three']);
+        sinon.assert.calledWithExactly(getQueriesStub.firstCall, {
+            from: 100,
+            until: 200,
+            length: 2,
+            client_name: 'phone.lan',
+        });
+        sinon.assert.calledWithExactly(getQueriesStub.secondCall, {
+            from: 100,
+            until: 200,
+            length: 2,
+            client_name: 'phone.lan',
+            cursor: 20,
         });
     });
 });

@@ -30,6 +30,7 @@ export default [
             // 'jsdoc/require-param-description': 'off',
             // 'jsdoc/require-returns-description': 'off',
             // 'jsdoc/require-returns-check': 'off',
+            'jsdoc/reject-any-type': 'off',
         },
     },
 ];
