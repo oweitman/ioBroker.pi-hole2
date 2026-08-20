@@ -215,8 +215,7 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.3.0 (2026-08-20)
 
 - Added configurable per-client daily domain statistics for permitted and blocked queries, including safe request distribution and JSON datapoints
   sorted by query count.

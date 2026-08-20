@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "news": {
+      "1.3.0": {
+        "en": "- Added configurable per-client daily domain statistics for permitted and blocked queries, including safe request distribution and JSON datapoints\n  sorted by query count.",
+        "de": "- Hinzugefügt wurden konfigurierbare, clientbezogene tägliche Domänenstatistiken für zulässige und blockierte Anfragen, einschließlich sicherer Anfrageverteilung und JSON-Datenpunkten\nsortiert nach Anzahl der Suchanfragen.",
+        "ru": "- Добавлена настраиваемая ежедневная статистика по доменам для каждого клиента, включающая разрешенные и заблокированные запросы, а также безопасное распределение запросов и данные в формате JSON.\nОтсортировано по количеству запросов.",
+        "pt": "- Adicionadas estatísticas diárias configuráveis por cliente para consultas permitidas e bloqueadas, incluindo distribuição segura de solicitações e pontos de dados JSON.\nClassificado por número de consultas.",
+        "nl": "- Configureerbare dagelijkse domeinstatistieken per client toegevoegd voor toegestane en geblokkeerde query's, inclusief veilige aanvraagdistributie en JSON-gegevenspunten.\ngesorteerd op aantal zoekopdrachten.",
+        "fr": "- Ajout de statistiques quotidiennes configurables par client et par domaine pour les requêtes autorisées et bloquées, incluant la distribution sécurisée des requêtes et les points de données JSON.\nTrié par nombre de requêtes.",
+        "it": "- Aggiunte statistiche giornaliere configurabili per ciascun cliente relative alle query consentite e bloccate, inclusa la distribuzione sicura delle richieste e i punti dati JSON.\nordinati in base al numero di query.",
+        "es": "- Se agregaron estadísticas diarias de dominio configurables por cliente para consultas permitidas y bloqueadas, incluyendo distribución segura de solicitudes y puntos de datos JSON.\nordenado por número de consultas.",
+        "pl": "- Dodano konfigurowalne codzienne statystyki domeny dla każdego klienta dotyczące dozwolonych i zablokowanych zapytań, w tym bezpieczną dystrybucję żądań i punkty danych JSON\nposortowane według liczby zapytań.",
+        "uk": "- Додано налаштовувану щоденну статистику домену для кожного клієнта для дозволених та заблокованих запитів, включаючи безпечний розподіл запитів та точки даних JSON.\nвідсортовано за кількістю запитів.",
+        "zh-cn": "- 添加了可配置的按客户端每日域名统计信息，包括允许查询和阻止查询的统计信息，以及安全请求分发和 JSON 数据点。\n按查询次数排序。"
+      },
       "1.2.0": {
         "en": "fix errors\nadd test and coverage\nimprove and harden error handling",
         "de": "fehler beheben\ntest und coverage hinzufügen\nverbesserung und verschärfung der fehlerbehandlung",
