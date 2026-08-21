@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "news": {
+      "1.4.1": {
+        "en": "An issue with the Pi-hole API prevented all data from being retrieved; this has been fixed.",
+        "de": "Ein Problem mit der Pi-hole-API verhinderte den Abruf aller Daten; dies wurde behoben.",
+        "ru": "Проблема с API Pi-hole препятствовала получению всех данных; она исправлена.",
+        "pt": "Um problema com a API do Pi-hole impedia a recuperação de todos os dados; esse problema já foi corrigido.",
+        "nl": "Een probleem met de Pi-hole API verhinderde dat alle gegevens konden worden opgehaald; dit is nu verholpen.",
+        "fr": "Un problème avec l'API Pi-hole empêchait la récupération de toutes les données ; ce problème a été résolu.",
+        "it": "Un problema con l'API di Pi-hole impediva il recupero di tutti i dati; il problema è stato risolto.",
+        "es": "Un problema con la API de Pi-hole impedía la recuperación de todos los datos; este problema ya se ha solucionado.",
+        "pl": "Problem z API Pi-hole uniemożliwiał pobranie jakichkolwiek danych; problem ten został rozwiązany.",
+        "uk": "Проблема з API Pi-hole перешкоджала отриманню всіх даних; це було виправлено.",
+        "zh-cn": "Pi-hole API 的一个问题导致无法检索所有数据；该问题已修复。"
+      },
       "1.4.0": {
         "en": "Added QueriesTotal and QueriesBlocked as counts per client.\nmove coverage dir to docs/coverage.\nfix setTimeout and setObject",
         "de": "Die Werte für QueriesTotal und QueriesBlocked wurden als Zähler pro Client hinzugefügt.\nDas Verzeichnis „coverage“ soll nach docs/coverage verschoben werden.\nDie Funktionen setTimeout und setObject wurden korrigiert.",
