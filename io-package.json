@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "news": {
+      "1.4.0": {
+        "en": "Added QueriesTotal and QueriesBlocked as counts per client.\nmove coverage dir to docs/coverage.\nfix setTimeout and setObject",
+        "de": "Die Werte für QueriesTotal und QueriesBlocked wurden als Zähler pro Client hinzugefügt.\nDas Verzeichnis „coverage“ soll nach docs/coverage verschoben werden.\nDie Funktionen setTimeout und setObject wurden korrigiert.",
+        "ru": "Добавлены показатели QueriesTotal и QueriesBlocked в качестве количества запросов для каждого клиента.\nПереместите каталог coverage в папку docs/coverage.\nИсправить setTimeout и setObject",
+        "pt": "Adicionadas as variáveis QueriesTotal e QueriesBlocked como contagens por cliente.\nMova o diretório de cobertura para docs/coverage.\nCorrigir setTimeout e setObject",
+        "nl": "QueriesTotal en QueriesBlocked zijn toegevoegd als tellingen per client.\nVerplaats de coverage-directory naar docs/coverage.\nCorrigeer de setTimeout- en setObject-problemen.",
+        "fr": "Ajout de QueriesTotal et QueriesBlocked comme compteurs par client.\nDéplacer le répertoire coverage vers docs/coverage.\nCorrection des fonctions setTimeout et setObject",
+        "it": "Aggiunti i conteggi di QueriesTotal e QueriesBlocked per ciascun client.\nSposta la directory di copertura in docs/coverage.\ncorreggere setTimeout e setObject",
+        "es": "Se añadieron QueriesTotal y QueriesBlocked como recuentos por cliente.\nMover el directorio coverage a docs/coverage.\nCorregir setTimeout y setObject",
+        "pl": "Dodano QueriesTotal i QueriesBlocked jako liczbę dla każdego klienta.\nprzenieś katalog coverage do docs/coverage.\nnapraw setTimeout i setObject",
+        "uk": "Додано загальну кількість запитів (QueriesTotal) та заблоковані запити (QueriesBlocked) як кількість для кожного клієнта.\nПеремістити каталог coverage до docs/coverage.\nвиправити setTimeout та setObject",
+        "zh-cn": "已将 QueriesTotal 和 QueriesBlocked 添加到每个客户端的计数中。\n将 coverage 目录移动到 docs/coverage。\n修复 setTimeout 和 setObject"
+      },
       "1.3.0": {
         "en": "- Added configurable per-client daily domain statistics for permitted and blocked queries, including safe request distribution and JSON datapoints\n  sorted by query count.",
         "de": "- Hinzugefügt wurden konfigurierbare, clientbezogene tägliche Domänenstatistiken für zulässige und blockierte Anfragen, einschließlich sicherer Anfrageverteilung und JSON-Datenpunkten\nsortiert nach Anzahl der Suchanfragen.",
