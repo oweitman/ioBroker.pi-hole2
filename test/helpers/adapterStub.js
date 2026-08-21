@@ -26,6 +26,7 @@ function createAdapterStub() {
         setObjectNotExistsAsync: sinon.fake.resolves(undefined),
         // Sync object creation
         setObject: sinon.fake((name, obj, cb) => { if (cb) cb(); }),
+        setObjectNotExists: sinon.fake((name, obj, cb) => { if (cb) cb(); }),
         // getObject uses internal flag _objectExists
         getObject: sinon.stub(),
         // deletion

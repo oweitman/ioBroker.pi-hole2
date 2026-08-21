@@ -448,7 +448,8 @@
 <a name='L383'></a><a href='#L383'>383</a>
 <a name='L384'></a><a href='#L384'>384</a>
 <a name='L385'></a><a href='#L385'>385</a>
-<a name='L386'></a><a href='#L386'>386</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L386'></a><a href='#L386'>386</a>
+<a name='L387'></a><a href='#L387'>387</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -458,11 +459,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -556,6 +557,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -829,7 +832,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -865,7 +867,7 @@ class ioUtil {
             common: stateTemplate,
             native: {},
         };
-        return this.adapter.setObjectAsync(name, newobj);
+        return this.adapter.setObjectNotExistsAsync(name, newobj);
     }
     /**
      * Asynchronously creates a state object in the ioBroker system.
@@ -883,7 +885,7 @@ class ioUtil {
             common: stateTemplate,
             native: {},
         };
-        return this.adapter.setObjectAsync(name, newobj);
+        return this.adapter.setObjectNotExistsAsync(name, newobj);
     }
     /**
      * Asynchronously creates a state object in the ioBroker system, if it does not already exist.
@@ -940,7 +942,9 @@ class ioUtil {
                 native: {},
             };
             if (!obj) {
-                callback ? this.adapter.setObject(name, newobj, callback) : <span class="branch-1 cbranch-no" title="branch not covered" >this.adapter.setObject(name, newobj);</span>
+                callback
+                    ? this.adapter.setObjectNotExists(name, newobj, callback)
+                    : <span class="branch-1 cbranch-no" title="branch not covered" >this.adapter.setObjectNotExists(name, newobj);</span>
             } else {
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (callback) {
                     callback();
@@ -1043,10 +1047,10 @@ class ioUtil {
     /**
      * Retrieves the state of an object in the ioBroker system.
      *
-     * @param {string} id - The name of the state to retrieve.
-     * @param {string|false|null|undefined} [level1path] - The first level path to prepend to the state name.
-     * @param {string|false|null|undefined} [level2path] - The second level path to prepend to the state name.
-     * @param {object} callback - The callback function to call when the state is retrieved.
+     * @param id - The name of the state to retrieve.
+     * @param level1path - The first level path to prepend to the state name, can be null or empty.
+     * @param level2path - The second level path to prepend to the state name, can be null or empty.
+     * @param callback - The callback function to call when the state is retrieved.
      */
     getState(id, level1path = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> level2path = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> callback = <span class="branch-0 cbranch-no" title="branch not covered" >undefined)</span> {
         this.logdebug(`getState ${id}`);
@@ -1089,8 +1093,8 @@ class ioUtil {
      * @param arg1 - Optional first argument to pass to the callback function.
      * @param arg2 - Optional second argument to pass to the callback function.
      */
-    setTimeout(id, callback, time, arg1 = null, arg2 = null) {
-        this.logsilly(`setTimeout ${id}`);
+    setMyTimeout(id, callback, time, arg1 = null, arg2 = null) {
+        this.logsilly(`setMyTimeout ${id}`);
         if (this.doClose) {
             return;
         }
@@ -1098,7 +1102,7 @@ class ioUtil {
         this.observers[id] = this.adapter.setTimeout(callback.bind(this), time, arg1, arg2);
     }
     /**
-     * Clears a timeout that was previously set using setTimeout.
+     * Clears a timeout that was previously set using setMyTimeout.
      *
      * @param id - Unique identifier for the timeout to clear.
      */
@@ -1122,7 +1126,7 @@ class ioUtil {
         delete this.observers[id];
     }
     /**
-     * Clears all timeouts and intervals that were previously set using setTimeout and setInterval.
+     * Clears all timeouts and intervals that were previously set using setMyTimeout and setInterval.
      *
      * This is a convenience method to clear all observers at once.
      */
@@ -1214,7 +1218,6 @@ function convertObjects(objects) {
         return acc;
     }, {});
 }
-&nbsp;
 module.exports = {
     ioUtil,
 };
@@ -1225,7 +1228,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-03T02:55:41.632Z
+                at 2026-08-21T12:00:10.046Z
             </div>
         <script src="prettify.js"></script>
         <script>

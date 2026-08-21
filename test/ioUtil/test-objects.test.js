@@ -9,8 +9,8 @@ describe('ioUtil object creation', () => {
         const util = new ioUtil(adapter);
         const template = { name: 'chan', role: 'value' };
         await util.createObjectChannelAsync(template, 'l1', 'l2');
-        sinon.assert.calledOnce(adapter.setObjectAsync);
-        const [name, obj] = adapter.setObjectAsync.getCall(0).args;
+        sinon.assert.calledOnce(adapter.setObjectNotExistsAsync);
+        const [name, obj] = adapter.setObjectNotExistsAsync.getCall(0).args;
         expect(name).to.equal('l1.l2.chan');
         expect(obj).to.deep.equal({ type: 'channel', common: template, native: {} });
     });
@@ -20,8 +20,8 @@ describe('ioUtil object creation', () => {
         const util = new ioUtil(adapter);
         const template = { name: 'state', role: 'value' };
         await util.createObjectAsync(template, 'a', 'b');
-        sinon.assert.calledOnce(adapter.setObjectAsync);
-        const [name, obj] = adapter.setObjectAsync.getCall(0).args;
+        sinon.assert.calledOnce(adapter.setObjectNotExistsAsync);
+        const [name, obj] = adapter.setObjectNotExistsAsync.getCall(0).args;
         expect(name).to.equal('a.b.state');
         expect(obj.type).to.equal('state');
         expect(obj.common).to.equal(template);
@@ -57,14 +57,14 @@ describe('ioUtil object creation', () => {
         // first call: object absent
         adapter._objectExists = false;
         util.createObjectState(template, 'x', 'y', () => {
-            // ensure setObject called once
-            sinon.assert.calledOnce(adapter.setObject);
-            const call = adapter.setObject.getCall(0);
+            // ensure setObjectNotExists called once
+            sinon.assert.calledOnce(adapter.setObjectNotExists);
+            const call = adapter.setObjectNotExists.getCall(0);
             expect(call.args[0]).to.equal('x.y.mystate');
-            // second call: object exists, should not call setObject again
+            // second call: object exists, should not call setObjectNotExists again
             adapter._objectExists = true;
             util.createObjectState(template, 'x', 'y', () => {
-                sinon.assert.calledOnce(adapter.setObject);
+                sinon.assert.calledOnce(adapter.setObjectNotExists);
                 done();
             });
         });

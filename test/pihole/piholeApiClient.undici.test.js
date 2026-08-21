@@ -34,6 +34,7 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
     let agentStub;
     let Client;
     let log;
+    let timerAdapter;
 
     beforeEach(function () {
         delete require.cache[modulePath];
@@ -41,7 +42,12 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
         requestStub = sinon.stub(undici, 'request').callsFake(async () => makeResp(200, /** @type {any} */ ({})));
         agentStub = sinon.stub(undici, 'Agent').callsFake(() => ({ __fake: true }));
 
-        Client = require('../../lib/piholeApiClient.js');
+        const ApiClientClass = require('../../lib/piholeApiClient.js');
+        Client = class extends ApiClientClass {
+            constructor(clientOptions) {
+                super({ ...clientOptions, adapter: timerAdapter });
+            }
+        };
 
         log = {
             error: sinon.spy(),
@@ -49,6 +55,10 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
             info: sinon.spy(),
             debug: sinon.spy(),
             silly: sinon.spy(),
+        };
+        timerAdapter = {
+            setTimeout: sinon.spy((callback, delayMs) => setTimeout(callback, delayMs)),
+            clearTimeout: sinon.spy(timer => clearTimeout(timer)),
         };
     });
 
@@ -88,6 +98,9 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
         });
         expect(result.response.statusCode).to.equal(200);
         sinon.assert.calledOnce(requestStub);
+        sinon.assert.calledOnce(timerAdapter.setTimeout);
+        sinon.assert.calledOnce(timerAdapter.clearTimeout);
+        expect(timerAdapter.clearTimeout.firstCall.args[0]).to.equal(timerAdapter.setTimeout.firstCall.returnValue);
     });
 
     it('makeRequest sends JSON body for POST requests', async function () {

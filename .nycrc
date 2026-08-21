@@ -1,6 +1,7 @@
 {
     "all": true,
     "reporter": ["text-summary", "html", "lcovonly"],
+    "report-dir": "doc/coverage",
     "include": ["lib/**/*.js"],
     "exclude": ["test/**", "node_modules/**", "lib/tools.js"],
     "check-coverage": false,

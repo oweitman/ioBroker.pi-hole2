@@ -223,6 +223,8 @@ You have restarted the adapter too often and each time a new session is requeste
 ### **WORK IN PROGRESS**
 
 - Added QueriesTotal and QueriesBlocked as counts per client.
+- move coverage dir to docs/coverage.
+- fix setTimeout and setObject
 
 ### 1.3.0 (2026-08-20)
 
