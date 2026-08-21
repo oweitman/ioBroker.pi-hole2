@@ -62,11 +62,15 @@ For every named Pi-hole client, the adapter creates two JSON states:
 ```text
 pi-hole2.0.Clients.<clientName>.permitted
 pi-hole2.0.Clients.<clientName>.blocked
+pi-hole2.0.Clients.<clientName>.QueriesTotal
+pi-hole2.0.Clients.<clientName>.QueriesBlocked
 ```
 
 Each value is a JSON array such as `[{"domain":"example.org","count":12}]`. A domain occurs only once in each
 array, and entries are sorted by descending count. Characters not safe in an ioBroker object ID (including `.` and
 `#`) are replaced with `_`. If two client names result in the same ID, a numeric suffix keeps their states separate.
+`QueriesTotal` contains the absolute number of all queries read for the client, while `QueriesBlocked` contains the
+absolute number of blocked queries. The names follow the same convention as the detailed summary datapoints.
 
 Pi-hole privacy levels and the Pi-hole `excludeClients`/`excludeDomains` settings also apply to this data. The adapter
 only reads the query log; it does not modify allowlists or denylists.
@@ -215,6 +219,11 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- Added QueriesTotal and QueriesBlocked as counts per client.
+
 ### 1.3.0 (2026-08-20)
 
 - Added configurable per-client daily domain statistics for permitted and blocked queries, including safe request distribution and JSON datapoints

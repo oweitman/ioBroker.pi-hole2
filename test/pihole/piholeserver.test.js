@@ -106,6 +106,8 @@ describe('piholeserver module', () => {
             { domain: 'b.example', status: 'CACHE' },
             { domain: 'ads.example', status: 'GRAVITY' },
             { domain: 'ads.example', status: 'CNAME_REGEX' },
+            { domain: 'cname.example', status: 'GRAVITY_CNAME' },
+            { domain: 'ede.example', status: 'EXTERNAL_BLOCKED_EDE15' },
             { domain: 'other.example', status: 'DENYLIST' },
         ];
 
@@ -115,8 +117,29 @@ describe('piholeserver module', () => {
         ]);
         expect(server.aggregateClientDomains(queries, true)).to.deep.equal([
             { domain: 'ads.example', count: 2 },
+            { domain: 'cname.example', count: 1 },
+            { domain: 'ede.example', count: 1 },
             { domain: 'other.example', count: 1 },
         ]);
+    });
+
+    it('writes absolute total and blocked counts for a client', async () => {
+        const server = new PiholeServer(makeAdapter());
+        server.clientDatapointsPath = 'Clients';
+        server.ioUtil.createObjectChannelAsync = sinon.stub().resolves();
+        server.ioUtil.createObjectNotExistsAsync = sinon.stub().resolves();
+        server.ioUtil.extendObjectAsync = sinon.stub().resolves();
+        server.ioUtil.setStateAsync = sinon.stub().resolves();
+        const queries = [
+            { domain: 'one.example', status: 'FORWARDED' },
+            { domain: 'two.example', status: 'CACHE' },
+            { domain: 'ads.example', status: 'GRAVITY_CNAME' },
+        ];
+
+        await server.updateClientDomainStates('phone.lan', 'phone_lan', queries);
+
+        sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesTotal', 3, 'Clients', 'phone_lan');
+        sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesBlocked', 1, 'Clients', 'phone_lan');
     });
 
     it('limits the total client delay to the configured refresh percentage', () => {
