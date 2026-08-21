@@ -219,6 +219,11 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- An issue with the Pi-hole API prevented all data from being retrieved; this has been fixed.
+
 ### 1.4.0 (2026-08-21)
 
 - Added QueriesTotal and QueriesBlocked as counts per client.

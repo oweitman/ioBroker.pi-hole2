@@ -161,11 +161,15 @@ describe('piholeserver module', () => {
         server.pihole = pihole;
         getQueriesStub.onFirstCall().resolves({
             ok: true,
-            body: { queries: [{ domain: 'one' }, { domain: 'two' }], cursor: 20 },
+            body: { queries: [{ domain: 'one' }, { domain: 'two' }], cursor: 20, recordsFiltered: 5 },
         });
         getQueriesStub.onSecondCall().resolves({
             ok: true,
-            body: { queries: [{ domain: 'three' }], cursor: 10 },
+            body: { queries: [{ domain: 'three' }, { domain: 'four' }], cursor: 20, recordsFiltered: 5 },
+        });
+        getQueriesStub.onThirdCall().resolves({
+            ok: true,
+            body: { queries: [{ domain: 'five' }], cursor: 20, recordsFiltered: 5 },
         });
 
         const result = await server.getClientQueriesForDay('phone.lan', 100, 200);
@@ -173,17 +177,27 @@ describe('piholeserver module', () => {
         if (!result) {
             throw new Error('Expected query results');
         }
-        expect(result.map(query => query.domain)).to.deep.equal(['one', 'two', 'three']);
+        expect(result.map(query => query.domain)).to.deep.equal(['one', 'two', 'three', 'four', 'five']);
         sinon.assert.calledWithExactly(getQueriesStub.firstCall, {
             from: 100,
             until: 200,
             length: 2,
+            start: 0,
             client_name: 'phone.lan',
         });
         sinon.assert.calledWithExactly(getQueriesStub.secondCall, {
             from: 100,
             until: 200,
             length: 2,
+            start: 2,
+            client_name: 'phone.lan',
+            cursor: 20,
+        });
+        sinon.assert.calledWithExactly(getQueriesStub.thirdCall, {
+            from: 100,
+            until: 200,
+            length: 2,
+            start: 4,
             client_name: 'phone.lan',
             cursor: 20,
         });
