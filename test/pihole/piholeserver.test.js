@@ -202,4 +202,131 @@ describe('piholeserver module', () => {
             cursor: 20,
         });
     });
+
+    describe('client domain statistics update', () => {
+        it('updates unique named clients sequentially and resolves sanitized name collisions', async () => {
+            const server = new PiholeServer(makeAdapter());
+            server.pihole = /** @type {any} */ ({
+                getQuerySuggestions: sinon.stub().resolves({
+                    ok: true,
+                    body: { suggestions: { client_name: ['a.b', '', null, 'a#b', 'a.b'] } },
+                }),
+            });
+            server.calculateClientQueryDelay = sinon.stub().returns(25);
+            server.getClientQueriesForDay = sinon.stub();
+            server.getClientQueriesForDay.onFirstCall().resolves([{ domain: 'first.example' }]);
+            server.getClientQueriesForDay.onSecondCall().resolves([{ domain: 'second.example' }]);
+            server.updateClientDomainStates = sinon.stub().resolves();
+            server.ioUtil.delay = sinon.stub().resolves();
+
+            await server.getClientDomainStats();
+
+            sinon.assert.calledTwice(server.getClientQueriesForDay);
+            sinon.assert.calledWithExactly(
+                server.updateClientDomainStates.firstCall,
+                'a#b',
+                'a_b',
+                [{ domain: 'first.example' }],
+            );
+            sinon.assert.calledWithExactly(
+                server.updateClientDomainStates.secondCall,
+                'a.b',
+                'a_b_2',
+                [{ domain: 'second.example' }],
+            );
+            sinon.assert.calledOnceWithExactly(server.ioUtil.delay, 25);
+        });
+
+        it('logs and stops when query suggestions are invalid', async () => {
+            const adapter = makeAdapter();
+            const server = new PiholeServer(adapter);
+            server.pihole = /** @type {any} */ ({
+                getQuerySuggestions: sinon.stub().resolves({ ok: false, error: new Error('suggestions failed') }),
+            });
+            server.getClientQueriesForDay = sinon.stub().resolves([]);
+
+            await server.getClientDomainStats();
+
+            sinon.assert.calledWithMatch(adapter.log.warn, 'Could not get Pi-hole client names: suggestions failed');
+            sinon.assert.notCalled(server.getClientQueriesForDay);
+        });
+    });
+
+    describe('recurring data loops', () => {
+        async function runSimpleLoop(method, dataMethod, refreshProperty, refreshSeconds) {
+            const server = new PiholeServer(makeAdapter());
+            const runOnce = PiholeServer.prototype[method];
+            server[refreshProperty] = refreshSeconds;
+            server[dataMethod] = sinon.stub().resolves();
+            server.ioUtil.delay = sinon.stub().resolves();
+            server.ioUtil.logdebug = sinon.stub();
+            server[method] = sinon.stub();
+
+            await runOnce.call(server);
+
+            sinon.assert.calledOnceWithExactly(server.ioUtil.logdebug, method);
+            sinon.assert.calledOnce(server[dataMethod]);
+            sinon.assert.calledOnceWithExactly(server.ioUtil.delay, refreshSeconds * 1000);
+            sinon.assert.calledOnce(server[method]);
+        }
+
+        it('runs and reschedules summary updates', async () => {
+            await runSimpleLoop('doDataSummary', 'getDataSummary', 'refreshSummary', 11);
+        });
+
+        it('runs and reschedules blocking updates', async () => {
+            await runSimpleLoop('doDataBlocking', 'getDataBlocking', 'refreshBlocking', 12);
+        });
+
+        it('runs and reschedules system updates', async () => {
+            await runSimpleLoop('doDataSystem', 'getDataSystem', 'refreshSystem', 13);
+        });
+
+        it('runs and reschedules version updates', async () => {
+            await runSimpleLoop('doDataVersion', 'getDataVersion', 'refreshVersion', 14);
+        });
+
+        it('checks datapoints before running and rescheduling top updates', async () => {
+            const server = new PiholeServer(makeAdapter());
+            const runOnce = PiholeServer.prototype.doDataTop;
+            server.refreshTop = 15;
+            server.checkDatapoints = sinon.stub().resolves();
+            server.checkDatapointsDetailedSummary = sinon.stub().resolves();
+            server.checkDatapointsDetailedVersion = sinon.stub().resolves();
+            server.getDataTop = sinon.stub().resolves();
+            server.ioUtil.delay = sinon.stub().resolves();
+            server.ioUtil.logdebug = sinon.stub();
+            server.doDataTop = sinon.stub();
+
+            await runOnce.call(server);
+
+            sinon.assert.callOrder(
+                server.checkDatapoints,
+                server.checkDatapointsDetailedSummary,
+                server.checkDatapointsDetailedVersion,
+                server.getDataTop,
+                server.ioUtil.delay,
+                server.doDataTop,
+            );
+            sinon.assert.calledOnceWithExactly(server.ioUtil.delay, 15000);
+        });
+
+        it('subtracts processing time before rescheduling client statistics', async () => {
+            const server = new PiholeServer(makeAdapter());
+            const runOnce = PiholeServer.prototype.doClientDomainStats;
+            server.refreshClientDomainStats = 60;
+            server.getClientDomainStats = sinon.stub().resolves();
+            server.ioUtil.delay = sinon.stub().resolves();
+            server.ioUtil.logdebug = sinon.stub();
+            server.doClientDomainStats = sinon.stub();
+            sinon.stub(Date, 'now').onFirstCall().returns(1000).onSecondCall().returns(1250);
+
+            await runOnce.call(server);
+
+            sinon.assert.calledOnceWithExactly(server.ioUtil.logdebug, 'doClientDomainStats');
+            sinon.assert.calledOnce(server.getClientDomainStats);
+            sinon.assert.calledOnceWithExactly(server.ioUtil.delay, 59750);
+            sinon.assert.calledOnce(server.doClientDomainStats);
+        });
+    });
 });
