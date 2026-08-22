@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "news": {
+      "1.4.2": {
+        "en": "fix pihole session handling",
+        "de": "Behebung des Problems mit der Pi-hole-Sitzungsverwaltung",
+        "ru": "Исправлена обработка сессий Pihole.",
+        "pt": "Corrigir o gerenciamento de sessões do Pi-hole",
+        "nl": "Verbeter de afhandeling van Pihole-sessies.",
+        "fr": "Correction de la gestion des sessions Pi-hole",
+        "it": "correzione della gestione delle sessioni Pi-hole",
+        "es": "Corregir el manejo de sesiones de Pi-hole",
+        "pl": "napraw obsługę sesji pihole",
+        "uk": "виправити обробку сеансу pihole",
+        "zh-cn": "修复 Pi-hole 会话处理"
+      },
       "1.4.1": {
         "en": "An issue with the Pi-hole API prevented all data from being retrieved; this has been fixed.",
         "de": "Ein Problem mit der Pi-hole-API verhinderte den Abruf aller Daten; dies wurde behoben.",
