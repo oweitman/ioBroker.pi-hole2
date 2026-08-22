@@ -158,6 +158,43 @@ describe('piholeApiClient (unit, no network)', function () {
             });
         });
 
+        it('logs in with password if Pi-hole FTL 6.7 returns 401 for GET /auth without a SID', async function () {
+            client.options.password = ',.123';
+            const makeRequestStub = sinon.stub(client, 'makeRequest');
+
+            makeRequestStub.onFirstCall().resolves({
+                ok: false,
+                body: {
+                    session: {
+                        valid: false,
+                        message: 'no SID provided',
+                    },
+                },
+                response: { statusCode: 401 },
+                error: { code: 'AUTH_FAILED', message: 'Pi-hole authentication failed' },
+            });
+            makeRequestStub.onSecondCall().resolves({
+                ok: true,
+                body: {
+                    session: {
+                        valid: true,
+                        sid: 'FTL67SID',
+                    },
+                },
+                response: { statusCode: 200 },
+            });
+
+            const result = await client.setupSession();
+
+            expect(result).to.equal(true);
+            expect(client.session).to.deep.equal({ valid: true, sid: 'FTL67SID' });
+            sinon.assert.calledTwice(makeRequestStub);
+            sinon.assert.calledWithExactly(makeRequestStub.firstCall, 'GET', '/auth');
+            sinon.assert.calledWithExactly(makeRequestStub.secondCall, 'POST', '/auth', {
+                password: ',.123',
+            });
+        });
+
         it('returns false if login request fails', async function () {
             const makeRequestStub = sinon.stub(client, 'makeRequest');
 

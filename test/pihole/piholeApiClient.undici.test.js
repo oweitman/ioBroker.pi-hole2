@@ -341,6 +341,47 @@ describe('piholeApiClient – undici.request stub (no network)', function () {
         sinon.assert.calledTwice(requestStub);
     });
 
+    it('setupSession authenticates after Pi-hole FTL 6.7 rejects GET /auth without a SID', async function () {
+        requestStub.callsFake(async (url, opts = {}) => {
+            const method = opts.method.toUpperCase();
+
+            if (String(url) === 'http://pi.hole/api/auth' && method === 'GET') {
+                expect(opts.headers).to.not.have.property('X-FTL-SID');
+                return makeResp(401, {
+                    session: {
+                        valid: false,
+                        message: 'no SID provided',
+                    },
+                });
+            }
+
+            if (String(url) === 'http://pi.hole/api/auth' && method === 'POST') {
+                expect(JSON.parse(opts.body)).to.deep.equal({ password: ',.123' });
+                return makeResp(200, {
+                    session: {
+                        valid: true,
+                        sid: 'FTL67SID',
+                    },
+                });
+            }
+
+            throw new Error(`Unexpected request: ${method} ${url}`);
+        });
+
+        const client = new Client({
+            baseUrl: 'http://pi.hole',
+            path: '/api',
+            log,
+            password: ',.123',
+        });
+
+        const result = await client.setupSession();
+
+        expect(result).to.equal(true);
+        expect(client.session).to.deep.equal({ valid: true, sid: 'FTL67SID' });
+        sinon.assert.calledTwice(requestStub);
+    });
+
     it('setupSession returns false and logs if auth check request fails', async function () {
         requestStub.rejects(new Error('network down'));
 
