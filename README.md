@@ -72,6 +72,11 @@ array, and entries are sorted by descending count. Characters not safe in an ioB
 `QueriesTotal` contains the absolute number of all queries read for the client, while `QueriesBlocked` contains the
 absolute number of blocked queries. The names follow the same convention as the detailed summary datapoints.
 
+Pi-hole client names are matched with their IP addresses using the client information returned with the queries. A
+client with a hostname keeps the sanitized hostname as its ioBroker object ID, while the channel object's display name
+contains its IP address. If Pi-hole reports only an IP address, the sanitized IP address is used as the object ID as
+well as the display name.
+
 Pi-hole privacy levels and the Pi-hole `excludeClients`/`excludeDomains` settings also apply to this data. The adapter
 only reads the query log; it does not modify allowlists or denylists.
 
@@ -228,6 +233,8 @@ You have restarted the adapter too often and each time a new session is requeste
 ### **WORK IN PROGRESS**
 
 - Optional cleanup of clients if no update took place the previous day and QueriesTotal is 0.
+- Unnamed clients with IP addresses have been added. Only clients that have performed at least one DNS query
+  during the day are added.
 
 ### 1.4.2 (2026-08-22)
 

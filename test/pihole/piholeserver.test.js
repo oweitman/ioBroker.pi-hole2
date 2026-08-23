@@ -165,11 +165,15 @@ describe('piholeserver module', () => {
             { domain: 'ads.example', status: 'GRAVITY_CNAME' },
         ];
 
-        await server.updateClientDomainStates('phone.lan', 'phone_lan', queries);
+        await server.updateClientDomainStates('phone.lan', '192.0.2.10', 'phone_lan', queries);
 
+        sinon.assert.calledWithExactly(server.ioUtil.createObjectChannelAsync, { name: 'phone_lan' }, 'Clients', '');
         sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesTotal', 3, 'Clients', 'phone_lan');
         sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesBlocked', 1, 'Clients', 'phone_lan');
-        sinon.assert.neverCalledWith(server.ioUtil.extendObjectAsync, 'phone_lan', 'Clients', null, sinon.match.any);
+        sinon.assert.calledWithExactly(server.ioUtil.extendObjectAsync, 'phone_lan', 'Clients', null, {
+            common: { name: '192.0.2.10' },
+            native: { clientName: 'phone.lan', clientIp: '192.0.2.10' },
+        });
     });
 
     it('does not create or refresh a client channel when its query count is zero', async () => {
@@ -180,11 +184,12 @@ describe('piholeserver module', () => {
         server.ioUtil.extendObjectAsync = sinon.stub().resolves();
         server.ioUtil.setStateAsync = sinon.stub().resolves();
 
-        await server.updateClientDomainStates('idle.lan', 'idle_lan', []);
+        await server.updateClientDomainStates('idle.lan', '192.0.2.11', 'idle_lan', [], false);
 
         sinon.assert.notCalled(server.ioUtil.createObjectChannelAsync);
-        sinon.assert.neverCalledWith(server.ioUtil.extendObjectAsync, 'idle_lan', 'Clients', null, sinon.match.any);
-        sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesTotal', 0, 'Clients', 'idle_lan');
+        sinon.assert.notCalled(server.ioUtil.createObjectNotExistsAsync);
+        sinon.assert.notCalled(server.ioUtil.extendObjectAsync);
+        sinon.assert.notCalled(server.ioUtil.setStateAsync);
     });
 
     it('limits the total client delay to the configured refresh percentage', () => {
@@ -217,7 +222,7 @@ describe('piholeserver module', () => {
             body: { queries: [{ domain: 'five' }], cursor: 20, recordsFiltered: 5 },
         });
 
-        const result = await server.getClientQueriesForDay('phone.lan', 100, 200);
+        const result = await server.getClientQueriesForDay({ client_name: 'phone.lan' }, 100, 200);
 
         if (!result) {
             throw new Error('Expected query results');
@@ -270,14 +275,18 @@ describe('piholeserver module', () => {
             sinon.assert.calledWithExactly(
                 server.updateClientDomainStates.firstCall,
                 'a#b',
+                '',
                 'a_b',
                 [{ domain: 'first.example' }],
+                false,
             );
             sinon.assert.calledWithExactly(
                 server.updateClientDomainStates.secondCall,
                 'a.b',
+                '',
                 'a_b_2',
                 [{ domain: 'second.example' }],
+                false,
             );
             sinon.assert.calledOnceWithExactly(server.ioUtil.delay, 25);
         });
@@ -311,8 +320,53 @@ describe('piholeserver module', () => {
 
             await server.getClientDomainStats();
 
-            sinon.assert.calledOnceWithExactly(server.updateClientDomainStates, 'existing', 'existing', []);
+            sinon.assert.calledOnceWithExactly(server.updateClientDomainStates, 'existing', '', 'existing', [], true);
             sinon.assert.calledOnce(server.deleteInactiveClientChannels);
+        });
+
+        it('matches client names to IP addresses and uses the IP as the channel display name', async () => {
+            const server = new PiholeServer(makeAdapter());
+            server.pihole = /** @type {any} */ ({
+                getQuerySuggestions: sinon.stub().resolves({
+                    ok: true,
+                    body: {
+                        suggestions: {
+                            client_ip: ['192.0.2.20', '2001:db8::20'],
+                            client_name: ['named.lan'],
+                        },
+                    },
+                }),
+            });
+            server.getClientQueriesForDay = sinon.stub();
+            server.getClientQueriesForDay.onFirstCall().resolves([
+                { client: { ip: '192.0.2.20', name: 'named.lan' }, domain: 'one.example' },
+            ]);
+            server.getClientQueriesForDay.onSecondCall().resolves([
+                { client: { ip: '2001:db8::20', name: null }, domain: 'two.example' },
+            ]);
+            server.updateClientDomainStates = sinon.stub().resolves();
+            server.getExistingClientChannels = sinon.stub().resolves(new Map());
+            server.deleteInactiveClientChannels = sinon.stub().resolves();
+
+            await server.getClientDomainStats();
+
+            sinon.assert.calledTwice(server.getClientQueriesForDay);
+            sinon.assert.calledWithExactly(
+                server.updateClientDomainStates.firstCall,
+                'named.lan',
+                '192.0.2.20',
+                'named_lan',
+                sinon.match.array,
+                false,
+            );
+            sinon.assert.calledWithExactly(
+                server.updateClientDomainStates.secondCall,
+                '',
+                '2001:db8::20',
+                '2001_db8_20',
+                sinon.match.array,
+                false,
+            );
         });
 
         it('deletes only zero-query clients without writes during the complete previous local day', async () => {
