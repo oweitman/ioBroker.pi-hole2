@@ -49,6 +49,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   os: ${{ matrix.os }}
+                  extra-tests: npm run test:js
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'
                   # install-command: 'npm install'
 
