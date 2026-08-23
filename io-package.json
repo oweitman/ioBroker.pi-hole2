@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pi-hole2",
-    "version": "1.4.2",
+    "version": "1.5.0",
     "news": {
+      "1.5.0": {
+        "en": "- Optional cleanup of clients if no update took place the previous day and QueriesTotal is 0.\n- Unnamed clients with IP addresses have been added. Only clients that have performed at least one DNS query during the day are added.",
+        "de": "- Optionale Bereinigung der Clients, wenn am Vortag keine Aktualisierung stattgefunden hat und QueriesTotal 0 ist.\n- Unbenannte Clients mit IP-Adressen wurden hinzugefügt. Es werden nur Clients hinzugefügt, die im Laufe des Tages mindestens eine DNS-Abfrage durchgeführt haben.",
+        "ru": "- Необязательная очистка клиентов, если в предыдущий день обновление не выполнялось и QueriesTotal равен 0.\n- Добавлены клиенты без имени с IP-адресами. Добавляются только клиенты, выполнившие хотя бы один DNS-запрос в течение дня.",
+        "pt": "- Limpeza opcional de clientes caso nenhuma atualização tenha ocorrido no dia anterior e QueriesTotal seja 0.\n- Foram adicionados clientes sem nome com endereços IP. Apenas clientes que realizaram pelo menos uma consulta DNS durante o dia são adicionados.",
+        "nl": "- Optionele opschoning van clients als er de vorige dag geen update heeft plaatsgevonden en QueriesTotal 0 is.\n- Naamloze clients met IP-adressen zijn toegevoegd. Alleen clients die gedurende de dag ten minste één DNS-query hebben uitgevoerd, worden toegevoegd.",
+        "fr": "- Nettoyage facultatif des clients si aucune mise à jour n'a eu lieu la veille et que QueriesTotal est égal à 0.\n- Les clients sans nom avec une adresse IP ont été ajoutés. Seuls les clients ayant effectué au moins une requête DNS au cours de la journée sont ajoutés.",
+        "it": "- Pulizia opzionale dei client se il giorno precedente non è stato eseguito alcun aggiornamento e QueriesTotal è 0.\n- Sono stati aggiunti i client senza nome con indirizzi IP. Vengono aggiunti solo i client che hanno eseguito almeno una query DNS durante il giorno.",
+        "es": "- Limpieza opcional de clientes si no se realizó ninguna actualización el día anterior y QueriesTotal es 0.\n- Se han añadido clientes sin nombre con direcciones IP. Solo se añaden los clientes que hayan realizado al menos una consulta DNS durante el día.",
+        "pl": "- Opcjonalne czyszczenie klientów, jeśli poprzedniego dnia nie przeprowadzono aktualizacji, a QueriesTotal wynosi 0.\n- Dodano klientów bez nazwy z adresami IP. Dodawani są tylko klienci, którzy wykonali co najmniej jedno zapytanie DNS w ciągu dnia.",
+        "uk": "- Необов'язкове очищення клієнтів, якщо попереднього дня оновлення не виконувалося, а QueriesTotal дорівнює 0.\n- Додано клієнтів без імені з IP-адресами. Додаються лише клієнти, які виконали принаймні один DNS-запит протягом дня.",
+        "zh-cn": "- 如果前一天未进行更新且 QueriesTotal 为 0，则可选择清理客户端。\n- 添加了带有 IP 地址的未命名客户端。仅添加当天至少执行过一次 DNS 查询的客户端。"
+      },
       "1.4.2": {
         "en": "fix pihole session handling",
         "de": "Behebung des Problems mit der Pi-hole-Sitzungsverwaltung",
@@ -80,19 +93,6 @@
         "pl": "tłumaczenie",
         "uk": "фіксувати переклад",
         "zh-cn": "固定翻译"
-      },
-      "1.1.0": {
-        "en": "add update indicators for different pihole components in the Data/Versions datapoints",
-        "de": "update-Indikatoren für verschiedene Pihole-Komponenten in den Data/Versions-Datenpunkten hinzufügen",
-        "ru": "добавить индикаторы обновления для различных компонентов в точках данных Data/Versions",
-        "pt": "adicionar indicadores de atualização para diferentes componentes pihole nos pontos de dados Data/Versions",
-        "nl": "update-indicatoren voor verschillende pihole componenten toevoegen in de Data/Versions datapoints",
-        "fr": "ajouter des indicateurs de mise à jour pour les différents éléments du trou dans les points de données Data/Versions",
-        "it": "aggiungere indicatori di aggiornamento per diversi componenti di foro nei datapoint Data/Versions",
-        "es": "añadir indicadores de actualización para diferentes componentes de agujeros en los puntos de datos Data/Versions",
-        "pl": "dodaj wskaźniki aktualizacji dla różnych elementów przegród w punktach danych Dane / Wersje",
-        "uk": "додавати індикатори оновлення для різних компонентів потоку у точках даних даних даних даних даних / даних",
-        "zh-cn": "在 Data/Version 数据点中添加不同 pihole 组件的更新指标"
       }
     },
     "titleLang": {

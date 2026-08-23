@@ -229,8 +229,7 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.5.0 (2026-08-23)
 
 - Optional cleanup of clients if no update took place the previous day and QueriesTotal is 0.
 - Unnamed clients with IP addresses have been added. Only clients that have performed at least one DNS query
