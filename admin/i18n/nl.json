@@ -9,6 +9,7 @@
     "enabledetailedsummary": "Gedetailleerde gegevensoverzicht",
     "enabledetailedversion": "Gedetailleerde gegevensversie"
   ,"enable client domain statistics": "Domeinstatistieken per client inschakelen",
+  "delete inactive clients": "Clients verwijderen die de hele vorige dag inactief waren",
   "refresh client domain statistics (seconds)": "Domeinstatistieken vernieuwen (seconden)",
   "spread client queries over refresh interval (percent)": "Clientaanvragen over het interval spreiden (percentage)"
 }

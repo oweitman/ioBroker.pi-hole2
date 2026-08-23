@@ -9,6 +9,7 @@
     "enabledetailedsummary": "Resumo dos dados detalhados",
     "enabledetailedversion": "Versão de dados detalhados"
   ,"enable client domain statistics": "Ativar estatísticas de domínio por cliente",
+  "delete inactive clients": "Excluir clientes inativos durante todo o dia anterior",
   "refresh client domain statistics (seconds)": "Atualizar estatísticas de domínio do cliente (segundos)",
   "spread client queries over refresh interval (percent)": "Distribuir consultas de clientes pelo intervalo (percentagem)"
 }

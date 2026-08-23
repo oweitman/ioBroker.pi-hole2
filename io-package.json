@@ -177,6 +177,7 @@
     "refreshTop": "60",
     "refreshVersion": "120",
     "enableClientDomainStats": true,
+    "deleteInactiveClients": false,
     "refreshClientDomainStats": 3600,
     "clientQuerySpread": 10
   },

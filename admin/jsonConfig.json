@@ -53,6 +53,17 @@
             "lg": 4,
             "xl": 4
         },
+        "deleteInactiveClients": {
+            "type": "checkbox",
+            "label": "delete inactive clients",
+            "newLine": true,
+            "default": false,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
         "refreshSummary": {
             "type": "number",
             "label": "refresh Summary (seconds)",

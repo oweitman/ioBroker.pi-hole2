@@ -75,6 +75,11 @@ absolute number of blocked queries. The names follow the same convention as the 
 Pi-hole privacy levels and the Pi-hole `excludeClients`/`excludeDomains` settings also apply to this data. The adapter
 only reads the query log; it does not modify allowlists or denylists.
 
+The optional inactive-client cleanup runs once per local day after 00:05. It recursively deletes a client channel only
+when its channel object has not been updated since the start of the previous local calendar day and its `QueriesTotal`
+state is `0`. This means that no write occurred during the complete previous day. Timestamps in the future are not
+treated as activity. New client channels are created only after at least one query was found for the current day.
+
 ### General SendTo Function
 
 The sendTo function is used to send commands to the pi-hole device.
@@ -219,6 +224,11 @@ You have restarted the adapter too often and each time a new session is requeste
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- Optional cleanup of clients if no update took place the previous day and QueriesTotal is 0.
+
 ### 1.4.2 (2026-08-22)
 
 - fix pihole session handling

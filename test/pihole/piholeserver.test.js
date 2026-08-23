@@ -29,6 +29,7 @@ function makeAdapter() {
         },
         subscribeStates: sinon.spy(),
         sendTo: sinon.spy(),
+        getObjectListAsync: sinon.stub().resolves({ rows: [] }),
     };
 }
 
@@ -49,6 +50,32 @@ describe('piholeserver module', () => {
         expect(server).to.be.an('object');
         expect(server.adapter).to.equal(adapter);
         expect(server.ioUtil).to.be.an('object');
+    });
+
+    it('checks inactive clients during adapter initialization', async () => {
+        const server = new PiholeServer(makeAdapter());
+        sinon.stub(PiholeClient.prototype, 'setupSession').resolves(true);
+        server.checkDatapoints = sinon.stub().resolves();
+        server.checkDatapointsDetailedSummary = sinon.stub().resolves();
+        server.checkDatapointsDetailedVersion = sinon.stub().resolves();
+        server.deleteInactiveClientChannels = sinon.stub().resolves();
+        server.doDataSummary = sinon.stub();
+        server.doDataBlocking = sinon.stub();
+        server.doDataSystem = sinon.stub();
+        server.doDataTop = sinon.stub();
+        server.doDataVersion = sinon.stub();
+        server.doClientDomainStats = sinon.stub();
+
+        await server.init();
+
+        sinon.assert.callOrder(
+            server.checkDatapoints,
+            server.checkDatapointsDetailedSummary,
+            server.checkDatapointsDetailedVersion,
+            server.deleteInactiveClientChannels,
+            server.doDataSummary,
+        );
+        sinon.assert.calledOnceWithExactly(server.deleteInactiveClientChannels);
     });
 
     it('exposes expected public methods', () => {
@@ -81,6 +108,8 @@ describe('piholeserver module', () => {
             'analyzeSummary',
             'getClientDomainStats',
             'getClientQueriesForDay',
+            'getExistingClientChannels',
+            'deleteInactiveClientChannels',
             'updateClientDomainStates',
             'sanitizeClientName',
             'isBlockedQueryStatus',
@@ -140,6 +169,22 @@ describe('piholeserver module', () => {
 
         sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesTotal', 3, 'Clients', 'phone_lan');
         sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesBlocked', 1, 'Clients', 'phone_lan');
+        sinon.assert.neverCalledWith(server.ioUtil.extendObjectAsync, 'phone_lan', 'Clients', null, sinon.match.any);
+    });
+
+    it('does not create or refresh a client channel when its query count is zero', async () => {
+        const server = new PiholeServer(makeAdapter());
+        server.clientDatapointsPath = 'Clients';
+        server.ioUtil.createObjectChannelAsync = sinon.stub().resolves();
+        server.ioUtil.createObjectNotExistsAsync = sinon.stub().resolves();
+        server.ioUtil.extendObjectAsync = sinon.stub().resolves();
+        server.ioUtil.setStateAsync = sinon.stub().resolves();
+
+        await server.updateClientDomainStates('idle.lan', 'idle_lan', []);
+
+        sinon.assert.notCalled(server.ioUtil.createObjectChannelAsync);
+        sinon.assert.neverCalledWith(server.ioUtil.extendObjectAsync, 'idle_lan', 'Clients', null, sinon.match.any);
+        sinon.assert.calledWithExactly(server.ioUtil.setStateAsync, 'QueriesTotal', 0, 'Clients', 'idle_lan');
     });
 
     it('limits the total client delay to the configured refresh percentage', () => {
@@ -249,6 +294,67 @@ describe('piholeserver module', () => {
 
             sinon.assert.calledWithMatch(adapter.log.warn, 'Could not get Pi-hole client names: suggestions failed');
             sinon.assert.notCalled(server.getClientQueriesForDay);
+        });
+
+        it('skips a new client with no queries but resets an existing client to zero', async () => {
+            const server = new PiholeServer(makeAdapter());
+            server.pihole = /** @type {any} */ ({
+                getQuerySuggestions: sinon.stub().resolves({
+                    ok: true,
+                    body: { suggestions: { client_name: ['existing', 'new'] } },
+                }),
+            });
+            server.getExistingClientChannels = sinon.stub().resolves(new Map([['existing', { type: 'channel' }]]));
+            server.getClientQueriesForDay = sinon.stub().resolves([]);
+            server.updateClientDomainStates = sinon.stub().resolves();
+            server.deleteInactiveClientChannels = sinon.stub().resolves();
+
+            await server.getClientDomainStats();
+
+            sinon.assert.calledOnceWithExactly(server.updateClientDomainStates, 'existing', 'existing', []);
+            sinon.assert.calledOnce(server.deleteInactiveClientChannels);
+        });
+
+        it('deletes only zero-query clients without writes during the complete previous local day', async () => {
+            const server = new PiholeServer(makeAdapter());
+            server.deleteInactiveClients = true;
+            server.clientDatapointsPath = 'Clients';
+            const now = new Date(2026, 7, 23, 18, 5, 0, 0);
+            const startOfPreviousDay = new Date(2026, 7, 22, 0, 0, 0, 0).getTime();
+            server.getExistingClientChannels = sinon.stub().resolves(
+                new Map([
+                    ['stale', { type: 'channel', ts: startOfPreviousDay - 1 }],
+                    ['future', { type: 'channel', ts: now.getTime() + 1 }],
+                    ['busy', { type: 'channel', ts: startOfPreviousDay - 1 }],
+                    ['previousDay', { type: 'channel', ts: startOfPreviousDay + 1 }],
+                    ['recent', { type: 'channel', ts: now.getTime() - 1000 }],
+                ]),
+            );
+            server.ioUtil.getStateAsync = sinon.stub();
+            server.ioUtil.getStateAsync.withArgs('QueriesTotal', 'Clients', 'stale').resolves({ val: 0 });
+            server.ioUtil.getStateAsync.withArgs('QueriesTotal', 'Clients', 'future').resolves({ val: 0 });
+            server.ioUtil.getStateAsync.withArgs('QueriesTotal', 'Clients', 'busy').resolves({ val: 1 });
+            server.ioUtil.deleteObjectAsync = sinon.stub().resolves();
+
+            await server.deleteInactiveClientChannels(now);
+            await server.deleteInactiveClientChannels(now);
+
+            sinon.assert.calledTwice(server.ioUtil.deleteObjectAsync);
+            sinon.assert.calledWithExactly(server.ioUtil.deleteObjectAsync, 'stale', 'Clients', null);
+            sinon.assert.calledWithExactly(server.ioUtil.deleteObjectAsync, 'future', 'Clients', null);
+            sinon.assert.calledOnce(server.getExistingClientChannels);
+        });
+
+        it('does not clean inactive clients before 00:05 or when disabled', async () => {
+            const server = new PiholeServer(makeAdapter());
+            server.getExistingClientChannels = sinon.stub().resolves(new Map());
+
+            server.deleteInactiveClients = false;
+            await server.deleteInactiveClientChannels(new Date(2026, 7, 23, 12, 0));
+            server.deleteInactiveClients = true;
+            await server.deleteInactiveClientChannels(new Date(2026, 7, 23, 0, 4));
+
+            sinon.assert.notCalled(server.getExistingClientChannels);
         });
     });
 
